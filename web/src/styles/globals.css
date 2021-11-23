@@ -1,0 +1,403 @@
+@import url("https://rsms.me/inter/inter.css");
+:root {
+    --gray-50: #f7fafc;
+    --gray-100: #edf2f7;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e0;
+    --gray-400: #a0aec0;
+    --gray-500: #718096;
+    --gray-600: #4a5568;
+    --gray-700: #2d3748;
+    --gray-800: #1a202c;
+    --gray-900: #171923;
+    --red-50: #fff5f5;
+    --red-100: #fed7d7;
+    --red-200: #feb2b2;
+    --red-300: #fc8181;
+    --red-400: #f56565;
+    --red-500: #e53e3e;
+    --red-600: #c53030;
+    --red-700: #9b2c2c;
+    --red-800: #822727;
+    --red-900: #63171b;
+    --orange-50: #fffaf0;
+    --orange-100: #feebc8;
+    --orange-200: #fbd38d;
+    --orange-300: #f6ad55;
+    --orange-400: #ed8936;
+    --orange-500: #dd6b20;
+    --orange-600: #c05621;
+    --orange-700: #9c4221;
+    --orange-800: #7b341e;
+    --orange-900: #652b19;
+    --yellow-50: #fffff0;
+    --yellow-100: #fefcbf;
+    --yellow-200: #faf089;
+    --yellow-300: #f6e05e;
+    --yellow-400: #ecc94b;
+    --yellow-500: #d69e2e;
+    --yellow-600: #b7791f;
+    --yellow-700: #975a16;
+    --yellow-800: #744210;
+    --yellow-900: #5f370e;
+    --green-50: #f0fff4;
+    --green-100: #c6f6d5;
+    --green-200: #9ae6b4;
+    --green-300: #68d391;
+    --green-400: #48bb78;
+    --green-500: #38a169;
+    --green-600: #2f855a;
+    --green-700: #276749;
+    --green-800: #22543d;
+    --green-900: #1c4532;
+    --teal-50: #e6fffa;
+    --teal-100: #b2f5ea;
+    --teal-200: #81e6d9;
+    --teal-300: #4fd1c5;
+    --teal-400: #38b2ac;
+    --teal-500: #319795;
+    --teal-600: #2c7a7b;
+    --teal-700: #285e61;
+    --teal-800: #234e52;
+    --teal-900: #1d4044;
+    --blue-50: #ebf8ff;
+    --blue-100: #bee3f8;
+    --blue-200: #90cdf4;
+    --blue-300: #63b3ed;
+    --blue-400: #4299e1;
+    --blue-500: #3182ce;
+    --blue-600: #2b6cb0;
+    --blue-700: #2c5282;
+    --blue-800: #2a4365;
+    --blue-900: #1a365d;
+    --cyan-50: #edfdfd;
+    --cyan-100: #c4f1f9;
+    --cyan-200: #9decf9;
+    --cyan-300: #76e4f7;
+    --cyan-400: #0bc5ea;
+    --cyan-500: #00b5d8;
+    --cyan-600: #00a3c4;
+    --cyan-700: #0987a0;
+    --cyan-800: #086f83;
+    --cyan-900: #065666;
+    --purple-50: #faf5ff;
+    --purple-100: #e9d8fd;
+    --purple-200: #d6bcfa;
+    --purple-300: #b794f4;
+    --purple-400: #9f7aea;
+    --purple-500: #805ad5;
+    --purple-600: #6b46c1;
+    --purple-700: #553c9a;
+    --purple-800: #44337a;
+    --purple-900: #322659;
+    --pink-50: #fff5f7;
+    --pink-100: #fed7e2;
+    --pink-200: #fbb6ce;
+    --pink-300: #f687b3;
+    --pink-400: #ed64a6;
+    --pink-500: #d53f8c;
+    --pink-600: #b83280;
+    --pink-700: #97266d;
+    --pink-800: #702459;
+    --pink-900: #521b41;
+    --linkedin-50: #e8f4f9;
+    --linkedin-100: #cfedfb;
+    --linkedin-200: #9bdaf3;
+    --linkedin-300: #68c7ec;
+    --linkedin-400: #34b3e4;
+    --linkedin-500: #00a0dc;
+    --linkedin-600: #008cc9;
+    --linkedin-700: #0077b5;
+    --linkedin-800: #005e93;
+    --linkedin-900: #004471;
+    --facebook-50: #e8f4f9;
+    --facebook-100: #d9dee9;
+    --facebook-200: #b7c2da;
+    --facebook-300: #6482c0;
+    --facebook-400: #4267b2;
+    --facebook-500: #385898;
+    --facebook-600: #314e89;
+    --facebook-700: #29487d;
+    --facebook-800: #223b67;
+    --facebook-900: #1e355b;
+    --messenger-50: #d0e6ff;
+    --messenger-100: #b9daff;
+    --messenger-200: #a2cdff;
+    --messenger-300: #7ab8ff;
+    --messenger-400: #2e90ff;
+    --messenger-500: #0078ff;
+    --messenger-600: #0063d1;
+    --messenger-700: #0052ac;
+    --messenger-800: #003c7e;
+    --messenger-900: #002c5c;
+    --whatsapp-50: #dffeec;
+    --whatsapp-100: #b9f5d0;
+    --whatsapp-200: #90edb3;
+    --whatsapp-300: #65e495;
+    --whatsapp-400: #3cdd78;
+    --whatsapp-500: #22c35e;
+    --whatsapp-600: #179848;
+    --whatsapp-700: #0c6c33;
+    --whatsapp-800: #01421c;
+    --whatsapp-900: #001803;
+    --twitter-50: #e5f4fd;
+    --twitter-100: #c8e9fb;
+    --twitter-200: #a8dcfa;
+    --twitter-300: #83cdf7;
+    --twitter-400: #57bbf5;
+    --twitter-500: #1da1f2;
+    --twitter-600: #1a94da;
+    --twitter-700: #1681bf;
+    --twitter-800: #136b9e;
+    --twitter-900: #0d4d71;
+    --telegram-50: #e3f2f9;
+    --telegram-100: #c5e4f3;
+    --telegram-200: #a2d4ec;
+    --telegram-300: #7ac1e4;
+    --telegram-400: #47a9da;
+    --telegram-500: #0088cc;
+    --telegram-600: #007ab8;
+    --telegram-700: #006ba1;
+    --telegram-800: #005885;
+    --telegram-900: #003f5e;
+    --spinner-bg: #656565;
+    --spinner-fg: #b2bac1;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Inter" !important;
+}
+
+
+/* SPINNER START */
+
+.spinner,
+.spinner:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+
+.spinner-in-button {
+    margin: 0px !important;
+    width: 7em;
+    height: 7em;
+    border-top: 0.0525rem solid var(--spinner-bg);
+    border-right: 0.0525rem solid var(--spinner-bg);
+    border-bottom: 0.0525rem solid var(--spinner-bg);
+    border-left: 0.0525rem solid var(--spinner-fg);
+}
+
+.spinner {
+    margin: 60px auto;
+    font-size: 3px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 0.125rem solid var(--spinner-bg);
+    border-right: 0.125rem solid var(--spinner-bg);
+    border-bottom: 0.125rem solid var(--spinner-bg);
+    border-left: 0.125rem solid var(--spinner-fg);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+/* SPINNER END */
+
+
+/* Button start */
+
+.button {
+    padding: 5px 15px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: var(--gray-100);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.button:hover {
+    background-color: var(--gray-200);
+}
+
+
+/* Button end */
+
+.menlo {
+    font-family: "Menlo", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.sidebar {
+    height: 100vh !important;
+    position: sticky;
+    top: 0 !important;
+}
+
+
+/* 
+.editor h1 {
+    font-size: 2em !important;
+}
+
+.editor h2 {
+    font-size: 1.5em !important;
+}
+
+.editor h3 {
+    font-size: 1.17em !important;
+}
+
+.editor h4 {
+    font-size: 1em !important;
+}
+
+.editor h5 {
+    font-size: 0.83em !important;
+}
+
+.editor h6 {
+    font-size: 0.75em !important;
+} */
+
+@media only screen and (max-width: 780px) {
+    .sidebar {
+        display: none !important;
+    }
+}
+
+code {
+    font-family: "Menlo", monospace !important;
+    color: #1e76da !important;
+}
+
+.colored-circle-green {
+    display: inline-block;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    background-color: #28c077;
+}
+
+.colored-circle-gray {
+    display: inline-block;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    background-color: var(--gray-500);
+}
+
+.colored-circle-red {
+    display: inline-block;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    background-color: var(--red-500);
+}
+
+.editor h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #111827;
+    margin: 2px 0px;
+}
+
+.editor h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #111827;
+}
+
+.editor h3 {
+    font-size: 1.17em;
+    font-weight: 600;
+    color: #111827;
+}
+
+.editor h4 {
+    font-size: 1em;
+    font-weight: 600;
+    color: #111827;
+}
+
+.editor h5 {
+    font-size: 0.83em;
+    font-weight: 600;
+    margin: 1.67em 0;
+    color: #111827;
+}
+
+.editor h6 {
+    font-size: 0.67em;
+    font-weight: 600;
+    color: #111827;
+}
+
+.editor code * {
+    font-family: "Menlo" !important;
+    background-color: var(--gray-200);
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 95%;
+}
+
+.editor .bold {
+    font-weight: 600;
+}
+
+.editor a {
+    color: #1e76da;
+}

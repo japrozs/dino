@@ -1,0 +1,44 @@
+{
+  "name": "web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "gen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "@headlessui/react": "^1.4.2",
+    "deep-equal": "^2.0.5",
+    "graphql": "^16.0.1",
+    "is-hotkey": "^0.2.0",
+    "is-url": "^1.2.4",
+    "next": "12.0.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "slate": "^0.70.0",
+    "slate-instant-replace": "^0.1.16",
+    "slate-react": "^0.70.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.3.0",
+    "@graphql-codegen/typescript": "2.4.1",
+    "@graphql-codegen/typescript-operations": "2.2.1",
+    "@graphql-codegen/typescript-react-apollo": "3.2.2",
+    "@types/deep-equal": "^1.0.1",
+    "@types/is-url": "^1.2.30",
+    "@types/node": "16.11.9",
+    "@types/react": "17.0.35",
+    "@types/slate": "^0.47.9",
+    "@types/slate-react": "^0.50.1",
+    "autoprefixer": "^10.4.0",
+    "eslint": "7",
+    "eslint-config-next": "12.0.4",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19",
+    "typescript": "4.5.2"
+  }
+}
