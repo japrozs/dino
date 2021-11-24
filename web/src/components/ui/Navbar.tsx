@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from "react";
+import React, { Fragment, useCallback, useState } from "react";
 import {
     BaseEditor,
     Editor as StaticEditor,
@@ -9,6 +9,9 @@ import {
 import { ReactEditor, useSlateStatic } from "slate-react";
 import { Icon } from "./editor/core/navbar/Icon";
 import { ParaStyleDropDown } from "./editor/core/navbar/ParaStyleDropdown";
+import { MdOutlineDelete } from "react-icons/md";
+import { DeleteNoteModal } from "./modals/DeleteNote";
+import { useRouter } from "next/router";
 
 interface NavbarProps {
     saving: boolean;
@@ -95,6 +98,8 @@ export const Navbar: React.FC<NavbarProps> = ({ saving }) => {
         [editor]
     );
     const blockType = getTextBlockStyle(editor);
+    const [open, setOpen] = useState(false);
+    const router = useRouter();
 
     return (
         <div className="z-10 flex items-center sticky top-0 px-2 py-1.5 bg-white border-b border-gray-200">
@@ -115,6 +120,19 @@ export const Navbar: React.FC<NavbarProps> = ({ saving }) => {
                 />
             ))}
             {saving ? <p>Saving...</p> : <p>Saved</p>}
+            <MdOutlineDelete
+                onClick={() => setOpen(true)}
+                className="p-1 ml-auto mr-2 rounded-sm cursor-pointer w-7 h-7 hover:bg-gray-200"
+            />
+            <DeleteNoteModal
+                open={open}
+                setOpen={setOpen}
+                id={
+                    typeof router.query.id == "string"
+                        ? parseInt(router.query.id)
+                        : -1
+                }
+            />
         </div>
     );
 };

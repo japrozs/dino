@@ -5,17 +5,16 @@ import { Note } from "../entities/Note";
 
 export class NoteResolver {
     @UseMiddleware(isAuth)
-    @Mutation(() => Boolean)
+    @Mutation(() => Note)
     async createNote(@Arg("title") title: string, @Ctx() { req }: Context) {
         if (title.trim().length == 0) {
             return false;
         }
-        await Note.create({
+        return Note.create({
             title,
             creatorId: req.session.userId,
             body: "",
         }).save();
-        return true;
     }
 
     @UseMiddleware(isAuth)
@@ -57,6 +56,20 @@ export class NoteResolver {
         await Note.update(id, {
             title,
         });
+        return true;
+    }
+
+    @UseMiddleware(isAuth)
+    @Mutation(() => Boolean)
+    async deleteNote(
+        @Arg("id", () => Int) id: number,
+        @Ctx() { req }: Context
+    ) {
+        const note = await Note.findOne(id, { relations: ["creator"] });
+        if (note?.creator.id != req.session.userId) {
+            return false;
+        }
+        await Note.delete({ id });
         return true;
     }
 }

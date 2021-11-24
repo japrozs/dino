@@ -20,6 +20,7 @@ import {
 import { Navbar, toggleStyle } from "../Navbar";
 import { renderElement } from "./core/renderElement";
 import { renderLeaf } from "./core/renderLeaf";
+import ContentEditable from "react-contenteditable";
 
 interface EditorProps {
     note: GetNoteQuery["getNote"];
@@ -136,7 +137,10 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
             await updateNoteTitleMutation({
                 variables: {
                     id: note.id,
-                    title,
+                    title: title.replace(
+                        /(?:^(?:&nbsp;)+)|(?:(?:&nbsp;)+$)/g,
+                        ""
+                    ),
                 },
             });
             await client.resetStore();
@@ -145,17 +149,25 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
         return () => clearTimeout(timeout);
     }, [title]);
 
+    const editableRef = useRef<any>();
+    const [editableText, setEditableText] = useState("Edit me.");
     return (
         <Slate editor={editor} value={value} onChange={onChangeHandler}>
             <Navbar saving={loading || titleChangeLoading} />
             <div className="max-w-3xl px-8 pt-6 mx-auto">
-                <p
+                <ContentEditable
+                    innerRef={editableRef}
+                    tagName="p"
+                    html={title}
                     className="mb-4 text-4xl font-semibold text-gray-800 focus:outline-none"
-                    contentEditable
-                    onInput={(e) => setTitle(e.currentTarget.textContent || "")}
-                >
-                    {title}
-                </p>
+                    onChange={(e) => {
+                        if (e.target.value.trim().length == 0) {
+                            return;
+                        } else {
+                            setTitle(e.target.value);
+                        }
+                    }}
+                />
                 <div className="editor" ref={editorRef}>
                     <Editable
                         renderElement={renderElement}
