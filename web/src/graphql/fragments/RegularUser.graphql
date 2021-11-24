@@ -6,5 +6,11 @@ fragment RegularUser on User {
     email
     createdAt
     updatedAt
+    notes {
+        ...RegularNote
+    }
+    folders {
+        ...RegularFolder
+    }
     __typename
 }

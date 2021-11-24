@@ -1,0 +1,9 @@
+fragment RegularNote on Note {
+    id
+    title
+    body
+    status
+    creatorId
+    createdAt
+    updatedAt
+}

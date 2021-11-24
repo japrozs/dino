@@ -1,0 +1,8 @@
+fragment RegularFolder on Folder {
+    id
+    name
+    noteIds
+    creatorId
+    createdAt
+    updatedAt
+}

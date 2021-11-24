@@ -1,0 +1,5 @@
+query getNote($id: Int!) {
+    getNote(id: $id) {
+        ...RegularNote
+    }
+}

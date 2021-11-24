@@ -14,6 +14,8 @@ import { User } from "./entities/User";
 import { Note } from "./entities/Note";
 import path from "path";
 import { NoteResolver } from "./resolvers/note";
+import { Folder } from "./entities/Folder";
+import { FolderResolver } from "./resolvers/folder";
 
 const main = async () => {
     const conn = await createConnection({
@@ -22,7 +24,7 @@ const main = async () => {
         logging: true,
         synchronize: true,
         migrations: [path.join(__dirname, "./migrations/*")],
-        entities: [User, Note],
+        entities: [User, Note, Folder],
     });
     await conn.runMigrations();
 
@@ -59,7 +61,7 @@ const main = async () => {
 
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [UserResolver, NoteResolver],
+            resolvers: [UserResolver, NoteResolver, FolderResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({

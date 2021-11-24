@@ -10,7 +10,9 @@ import { ReactEditor, useSlateStatic } from "slate-react";
 import { Icon } from "./editor/core/navbar/Icon";
 import { ParaStyleDropDown } from "./editor/core/navbar/ParaStyleDropdown";
 
-interface NavbarProps {}
+interface NavbarProps {
+    saving: boolean;
+}
 type SlateEditor = BaseEditor & ReactEditor;
 
 function getActiveStyles(editor: SlateEditor) {
@@ -81,7 +83,7 @@ function toggleBlockType(editor: SlateEditor, blockType: any) {
     );
 }
 
-export const Navbar: React.FC<NavbarProps> = ({}) => {
+export const Navbar: React.FC<NavbarProps> = ({ saving }) => {
     const editor = useSlateStatic();
     const onBlockTypeChange = useCallback(
         (targetType) => {
@@ -112,6 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
                     editor={editor}
                 />
             ))}
+            {saving ? <p>Saving...</p> : <p>Saved</p>}
         </div>
     );
 };

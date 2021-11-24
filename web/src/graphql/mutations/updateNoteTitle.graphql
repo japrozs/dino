@@ -1,0 +1,3 @@
+mutation updateNoteTitle($id: Int!, $title: String!) {
+    updateNoteTitle(id: $id, title: $title)
+}

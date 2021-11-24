@@ -1,13 +1,29 @@
+import { useApolloClient } from "@apollo/client";
 import areEqual from "deep-equal";
 import isHotkey from "is-hotkey";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, {
+    createRef,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 import { BaseEditor, createEditor, Descendant } from "slate";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
+import {
+    GetNoteQuery,
+    UpdateNoteTitleDocument,
+    useUpdateNoteMutation,
+    useUpdateNoteTitleMutation,
+} from "../../../generated/graphql";
 import { Navbar, toggleStyle } from "../Navbar";
 import { renderElement } from "./core/renderElement";
 import { renderLeaf } from "./core/renderLeaf";
 
-interface EditorProps {}
+interface EditorProps {
+    note: GetNoteQuery["getNote"];
+}
 
 type CustomElement = {
     type: string;
@@ -73,22 +89,18 @@ const useSelection = (editor: SlateEditor) => {
     return [selection, setSelectionOptimized];
 };
 
-export const Editor: React.FC<EditorProps> = ({}) => {
+export const Editor: React.FC<EditorProps> = ({ note }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
-    const [value, setValue] = useState<Descendant[]>([
-        {
-            type: "h1",
-            children: [{ text: "Heading 1" }],
-        },
-        {
-            type: "h2",
-            children: [{ text: "Heading 2" }],
-        },
-        {
-            type: "h3",
-            children: [{ text: "Heading 3" }],
-        },
-    ] as any);
+    const [value, setValue] = useState<Descendant[]>(
+        note.body == ""
+            ? [
+                  {
+                      type: "paragraph",
+                      children: [{ text: "" }],
+                  },
+              ]
+            : (JSON.parse(note.body).value as any)
+    );
     const { renderElement, onKeyDown } = useEditorConfig(editor);
     const [selection, setSelection] = useSelection(editor);
     const editorRef = useRef(null);
@@ -100,21 +112,60 @@ export const Editor: React.FC<EditorProps> = ({}) => {
         },
         [editor.selection, setSelection]
     );
+    const [updateNoteMutation, { loading }] = useUpdateNoteMutation();
+    const [updateNoteTitleMutation, { loading: titleChangeLoading }] =
+        useUpdateNoteTitleMutation();
+    const [title, setTitle] = useState(note.title);
+    const client = useApolloClient();
+
+    useEffect(() => {
+        const timeout = setTimeout(async () => {
+            await updateNoteMutation({
+                variables: {
+                    id: note.id,
+                    body: JSON.stringify({ value }),
+                },
+            });
+        }, 500);
+
+        return () => clearTimeout(timeout);
+    }, [value]);
+
+    useEffect(() => {
+        const timeout = setTimeout(async () => {
+            await updateNoteTitleMutation({
+                variables: {
+                    id: note.id,
+                    title,
+                },
+            });
+            await client.resetStore();
+        }, 300);
+
+        return () => clearTimeout(timeout);
+    }, [title]);
 
     return (
         <Slate editor={editor} value={value} onChange={onChangeHandler}>
-            <Navbar />
+            <Navbar saving={loading || titleChangeLoading} />
             <div className="max-w-3xl px-8 pt-6 mx-auto">
                 <p
                     className="mb-4 text-4xl font-semibold text-gray-800 focus:outline-none"
                     contentEditable
+                    onInput={(e) => setTitle(e.currentTarget.textContent || "")}
                 >
-                    🚀 Your first dino document!
+                    {title}
                 </p>
                 <div className="editor" ref={editorRef}>
                     <Editable
                         renderElement={renderElement}
                         renderLeaf={renderLeaf}
+                        placeholder={"Start writing here"}
+                        renderPlaceholder={({ children, attributes }) => (
+                            <div {...attributes}>
+                                <p>{children}</p>
+                            </div>
+                        )}
                         onKeyDown={onKeyDown}
                     />
                 </div>

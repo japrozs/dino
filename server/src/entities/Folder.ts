@@ -12,25 +12,21 @@ import { User } from "./User";
 
 @ObjectType()
 @Entity()
-export class Note extends BaseEntity {
+export class Folder extends BaseEntity {
     @Field()
     @PrimaryGeneratedColumn()
     id: number;
 
     @Field()
     @Column()
-    title: string;
+    name: string;
 
-    @Field(() => String)
-    @Column({ nullable: true })
-    body: string;
-
-    @Field(() => String)
-    @Column({ default: "active" })
-    status: string;
+    @Field(() => [String])
+    @Column("simple-array")
+    noteIds: string[];
 
     @Field(() => User)
-    @ManyToOne(() => User, (user) => user.notes)
+    @ManyToOne(() => User, (user) => user.folders)
     creator: User;
 
     @Field()

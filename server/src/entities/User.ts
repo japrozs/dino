@@ -6,7 +6,10 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
+    OneToMany,
 } from "typeorm";
+import { Folder } from "./Folder";
+import { Note } from "./Note";
 
 @ObjectType()
 @Entity()
@@ -36,6 +39,14 @@ export class User extends BaseEntity {
 
     @Column()
     password!: string;
+
+    @Field(() => [Note])
+    @OneToMany(() => Note, (note) => note.creator)
+    notes: Note[];
+
+    @Field(() => [Folder])
+    @OneToMany(() => Folder, (folder) => folder.creator)
+    folders: Folder[];
 
     @Field(() => String)
     @CreateDateColumn()
