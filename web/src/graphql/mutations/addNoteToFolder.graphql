@@ -1,0 +1,3 @@
+mutation addNoteToFolder($folderId: Int!, $noteId: Int!) {
+    addNoteToFolder(folderId: $folderId, noteId: $noteId)
+}

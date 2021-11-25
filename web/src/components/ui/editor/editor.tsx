@@ -153,7 +153,7 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
     const [editableText, setEditableText] = useState("Edit me.");
     return (
         <Slate editor={editor} value={value} onChange={onChangeHandler}>
-            <Navbar saving={loading || titleChangeLoading} />
+            <Navbar saving={loading || titleChangeLoading} id={note.id} />
             <div className="max-w-3xl px-8 pt-6 mx-auto">
                 <ContentEditable
                     innerRef={editableRef}

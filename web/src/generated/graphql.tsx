@@ -39,6 +39,7 @@ export type Mutation = {
   createFolder: Scalars['Boolean'];
   createNote: Note;
   deleteNote: Scalars['Boolean'];
+  deleteNoteFromFolder: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
   login: UserResponse;
   logout: Scalars['Boolean'];
@@ -72,6 +73,12 @@ export type MutationCreateNoteArgs = {
 
 export type MutationDeleteNoteArgs = {
   id: Scalars['Int'];
+};
+
+
+export type MutationDeleteNoteFromFolderArgs = {
+  folderId: Scalars['Int'];
+  noteId: Scalars['Int'];
 };
 
 
@@ -160,6 +167,14 @@ export type RegularUserFragment = { __typename: 'User', id: number, name: string
 
 export type RegularUserResponseFragment = { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined };
 
+export type AddNoteToFolderMutationVariables = Exact<{
+  folderId: Scalars['Int'];
+  noteId: Scalars['Int'];
+}>;
+
+
+export type AddNoteToFolderMutation = { __typename?: 'Mutation', addNoteToFolder: boolean };
+
 export type ChangePasswordMutationVariables = Exact<{
   token: Scalars['String'];
   newPassword: Scalars['String'];
@@ -188,6 +203,14 @@ export type DeleteNoteMutationVariables = Exact<{
 
 
 export type DeleteNoteMutation = { __typename?: 'Mutation', deleteNote: boolean };
+
+export type DeleteNoteFromFolderMutationVariables = Exact<{
+  folderId: Scalars['Int'];
+  noteId: Scalars['Int'];
+}>;
+
+
+export type DeleteNoteFromFolderMutation = { __typename?: 'Mutation', deleteNoteFromFolder: boolean };
 
 export type ForgotPasswordMutationVariables = Exact<{
   email: Scalars['String'];
@@ -301,6 +324,38 @@ export const RegularUserResponseFragmentDoc = gql`
 }
     ${RegularErrorFragmentDoc}
 ${RegularUserFragmentDoc}`;
+export const AddNoteToFolderDocument = gql`
+    mutation addNoteToFolder($folderId: Int!, $noteId: Int!) {
+  addNoteToFolder(folderId: $folderId, noteId: $noteId)
+}
+    `;
+export type AddNoteToFolderMutationFn = Apollo.MutationFunction<AddNoteToFolderMutation, AddNoteToFolderMutationVariables>;
+
+/**
+ * __useAddNoteToFolderMutation__
+ *
+ * To run a mutation, you first call `useAddNoteToFolderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddNoteToFolderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addNoteToFolderMutation, { data, loading, error }] = useAddNoteToFolderMutation({
+ *   variables: {
+ *      folderId: // value for 'folderId'
+ *      noteId: // value for 'noteId'
+ *   },
+ * });
+ */
+export function useAddNoteToFolderMutation(baseOptions?: Apollo.MutationHookOptions<AddNoteToFolderMutation, AddNoteToFolderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddNoteToFolderMutation, AddNoteToFolderMutationVariables>(AddNoteToFolderDocument, options);
+      }
+export type AddNoteToFolderMutationHookResult = ReturnType<typeof useAddNoteToFolderMutation>;
+export type AddNoteToFolderMutationResult = Apollo.MutationResult<AddNoteToFolderMutation>;
+export type AddNoteToFolderMutationOptions = Apollo.BaseMutationOptions<AddNoteToFolderMutation, AddNoteToFolderMutationVariables>;
 export const ChangePasswordDocument = gql`
     mutation changePassword($token: String!, $newPassword: String!) {
   changePassword(token: $token, newPassword: $newPassword) {
@@ -430,6 +485,38 @@ export function useDeleteNoteMutation(baseOptions?: Apollo.MutationHookOptions<D
 export type DeleteNoteMutationHookResult = ReturnType<typeof useDeleteNoteMutation>;
 export type DeleteNoteMutationResult = Apollo.MutationResult<DeleteNoteMutation>;
 export type DeleteNoteMutationOptions = Apollo.BaseMutationOptions<DeleteNoteMutation, DeleteNoteMutationVariables>;
+export const DeleteNoteFromFolderDocument = gql`
+    mutation deleteNoteFromFolder($folderId: Int!, $noteId: Int!) {
+  deleteNoteFromFolder(folderId: $folderId, noteId: $noteId)
+}
+    `;
+export type DeleteNoteFromFolderMutationFn = Apollo.MutationFunction<DeleteNoteFromFolderMutation, DeleteNoteFromFolderMutationVariables>;
+
+/**
+ * __useDeleteNoteFromFolderMutation__
+ *
+ * To run a mutation, you first call `useDeleteNoteFromFolderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteNoteFromFolderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteNoteFromFolderMutation, { data, loading, error }] = useDeleteNoteFromFolderMutation({
+ *   variables: {
+ *      folderId: // value for 'folderId'
+ *      noteId: // value for 'noteId'
+ *   },
+ * });
+ */
+export function useDeleteNoteFromFolderMutation(baseOptions?: Apollo.MutationHookOptions<DeleteNoteFromFolderMutation, DeleteNoteFromFolderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteNoteFromFolderMutation, DeleteNoteFromFolderMutationVariables>(DeleteNoteFromFolderDocument, options);
+      }
+export type DeleteNoteFromFolderMutationHookResult = ReturnType<typeof useDeleteNoteFromFolderMutation>;
+export type DeleteNoteFromFolderMutationResult = Apollo.MutationResult<DeleteNoteFromFolderMutation>;
+export type DeleteNoteFromFolderMutationOptions = Apollo.BaseMutationOptions<DeleteNoteFromFolderMutation, DeleteNoteFromFolderMutationVariables>;
 export const ForgotPasswordDocument = gql`
     mutation ForgotPassword($email: String!) {
   forgotPassword(email: $email)

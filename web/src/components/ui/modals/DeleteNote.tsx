@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { useDeleteNoteMutation } from "../../../generated/graphql";
+import { useRouter } from "next/router";
+import { useApolloClient } from "@apollo/client";
 
 interface DeleteNoteModalProps {
     open: boolean;
@@ -12,6 +15,20 @@ export const DeleteNoteModal: React.FC<DeleteNoteModalProps> = ({
     setOpen,
     id,
 }) => {
+    const [deleteNoteMutation] = useDeleteNoteMutation();
+    const router = useRouter();
+    const client = useApolloClient();
+
+    const deleteNote = async () => {
+        await deleteNoteMutation({
+            variables: {
+                id,
+            },
+        });
+        router.push(`/app`);
+        await client.resetStore();
+    };
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog
@@ -52,6 +69,20 @@ export const DeleteNoteModal: React.FC<DeleteNoteModalProps> = ({
                             <code>
                                 are you sure you want to delete this note ?
                             </code>
+                            <div className="flex items-center justify-end mt-2">
+                                <p
+                                    onClick={() => setOpen(false)}
+                                    className="mr-3 text-red-500 cursor-pointer hover:bg-gray-200 py-1.5 px-2 rounded-sm menlo"
+                                >
+                                    cancel
+                                </p>
+                                <p
+                                    onClick={deleteNote}
+                                    className="text-green-500 hover:bg-gray-200 py-1.5 px-2 rounded-sm cursor-pointer menlo"
+                                >
+                                    yes, i{"'"}m sure
+                                </p>
+                            </div>
                         </div>
                     </Transition.Child>
                 </div>
