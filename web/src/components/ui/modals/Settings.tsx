@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useMeQuery } from "../../../generated/graphql";
@@ -66,7 +67,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     <img
                                         src={data.me?.imgUrl}
                                         alt={data.me?.name}
-                                        className="w-20 h-20 mt-2 rounded rounded-full"
+                                        className="w-20 h-20 mt-2 rounded-full"
                                     />
                                     <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
                                         Upload photo
