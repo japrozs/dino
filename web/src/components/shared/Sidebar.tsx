@@ -1,18 +1,20 @@
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState } from "react";
 import { useCreateNoteMutation, useMeQuery } from "../../generated/graphql";
-import { BiDotsVerticalRounded, BiPlus } from "react-icons/bi";
+import { BiDotsVerticalRounded, BiPlus, BiCog, BiSearch } from "react-icons/bi";
 import { NoteCard } from "../ui/cards/Note";
 import { FolderCard } from "../ui/cards/Folder";
 import { FolderModal } from "../ui/modals/Folder";
 import { useRouter } from "next/router";
 import { useApolloClient } from "@apollo/client";
 import { Menu, Transition } from "@headlessui/react";
+import { SettingsModal } from "../ui/modals/Settings";
 
 interface SidebarProps {}
 
 const Sidebar: React.FC<SidebarProps> = ({}) => {
     const { data, loading } = useMeQuery();
     const [open, setOpen] = useState(false);
+    const [settingsOpen, setSettingsOpen] = useState(false);
     const [createNote] = useCreateNoteMutation();
     const router = useRouter();
     const client = useApolloClient();
@@ -86,7 +88,22 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                             </Menu.Items>
                         </Transition>
                     </Menu>
-                    <nav className="pt-3">
+                    <div className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200">
+                        <BiSearch className="w-4 h-4 text-gray-500" />
+                        <p className="ml-2 text-sm font-medium text-gray-700">
+                            Quick Find
+                        </p>
+                    </div>
+                    <div
+                        onClick={() => setSettingsOpen(true)}
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200"
+                    >
+                        <BiCog className="w-4 h-4 text-gray-500" />
+                        <p className="ml-2 text-sm font-medium text-gray-700">
+                            Settings
+                        </p>
+                    </div>
+                    <nav className="pt-1">
                         <div className="flex items-center px-2 mb-1 group">
                             <h1
                                 className="font-semibold text-gray-500"
@@ -132,6 +149,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                 <></>
             )}
             <FolderModal open={open} setOpen={setOpen} />
+            <SettingsModal open={settingsOpen} setOpen={setSettingsOpen} />
         </>
     );
 };

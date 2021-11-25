@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                         </div>
                         <MdOutlineDelete
                             onClick={() => setOpen(true)}
-                            className="p-1 rounded-sm cursor-pointer w-7 h-7 hover:bg-gray-200"
+                            className="p-1 ml-2 rounded-sm cursor-pointer w-7 h-7 hover:bg-gray-100"
                         />
                     </>
                 )}

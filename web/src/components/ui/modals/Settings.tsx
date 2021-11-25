@@ -1,0 +1,139 @@
+import React, { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { useMeQuery } from "../../../generated/graphql";
+
+interface SettingsModalProps {
+    open: boolean;
+    setOpen: any;
+}
+
+export const SettingsModal: React.FC<SettingsModalProps> = ({
+    open,
+    setOpen,
+}) => {
+    const { data, loading } = useMeQuery();
+    const [name, setName] = useState(data?.me?.name);
+    return (
+        <Transition.Root show={open} as={Fragment}>
+            <Dialog
+                as="div"
+                className="fixed inset-0 z-10 overflow-y-auto"
+                onClose={setOpen}
+            >
+                <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                    </Transition.Child>
+
+                    {/* This element is to trick the browser into centering the modal contents. */}
+                    <span
+                        className="hidden sm:inline-block sm:align-middle sm:h-screen"
+                        aria-hidden="true"
+                    >
+                        &#8203;
+                    </span>
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enterTo="opacity-100 translate-y-0 sm:scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                        leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    >
+                        <div
+                            className="inline-block p-4 overflow-x-hidden overflow-y-scroll text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+                            style={{
+                                maxHeight: "35rem",
+                            }}
+                        >
+                            {data && !loading ? (
+                                <>
+                                    <h1 className="pb-1 mb-1 text-base font-medium text-gray-800 border-b border-gray-300">
+                                        Account
+                                    </h1>
+                                    <p className="mt-3 text-sm text-gray-800">
+                                        Photo
+                                    </p>
+                                    <img
+                                        src={data.me?.imgUrl}
+                                        alt={data.me?.name}
+                                        className="w-20 h-20 mt-2 rounded rounded-full"
+                                    />
+                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                        Upload photo
+                                    </button>
+                                    <hr className="my-3 border-t border-gray-300" />
+                                    <p className="mb-3 text-sm text-gray-800 ">
+                                        Personal Info
+                                    </p>
+                                    <p className="text-xs text-gray-500">
+                                        Email
+                                    </p>
+                                    <p className="text-sm text-gray-800 menlo">
+                                        {data.me?.email}
+                                    </p>
+                                    <p className="mt-3 text-xs text-gray-500">
+                                        Name
+                                    </p>
+                                    <input
+                                        className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100"
+                                        value={name}
+                                        onChange={(e) =>
+                                            setName(e.target.value)
+                                        }
+                                    />
+                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <p className="mb-1 text-sm text-gray-800 ">
+                                        Password
+                                    </p>
+                                    <p className="text-xs text-gray-500">
+                                        Log out after reseting the password, to
+                                        use it
+                                    </p>
+                                    <div className="flex items-center my-2 mt-4">
+                                        <button className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                            Change password
+                                        </button>
+                                        <p className="p-1 ml-3 text-xs text-gray-500 rounded-sm cursor-pointer hover:bg-gray-100">
+                                            Remove password
+                                        </p>
+                                    </div>
+                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <p className="mb-1 text-sm text-gray-800 ">
+                                        Log out of all devices
+                                    </p>
+                                    <p className="text-xs text-gray-500">
+                                        You will be logged out of all other
+                                        active sessions besides this one and
+                                        will have to log back in.
+                                    </p>
+                                    <button className="px-3 py-1.5 mt-2 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50">
+                                        Log out
+                                    </button>
+                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <p className="mb-3 text-sm text-gray-800 ">
+                                        Danger zone Info
+                                    </p>
+                                    <button className="px-3 py-1.5 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50">
+                                        Delete account
+                                    </button>
+                                </>
+                            ) : (
+                                <p>loading...</p>
+                            )}
+                        </div>
+                    </Transition.Child>
+                </div>
+            </Dialog>
+        </Transition.Root>
+    );
+};
