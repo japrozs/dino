@@ -12,6 +12,7 @@
     "@apollo/client": "^3.4.17",
     "@headlessui/react": "^1.4.2",
     "deep-equal": "^2.0.5",
+    "formik": "^2.2.9",
     "graphql": "^16.0.1",
     "is-hotkey": "^0.2.0",
     "is-url": "^1.2.4",

@@ -67,7 +67,9 @@ export class UserResolver {
         }
 
         const userIdNum = parseInt(userId);
-        const user = await User.findOne(userIdNum);
+        const user = await User.findOne(userIdNum, {
+            relations: ["notes", "folders"],
+        });
 
         if (!user) {
             return {
@@ -115,7 +117,7 @@ export class UserResolver {
 
         await sendEmail(
             email,
-            `<a href="http://localhost:3000/change-password/${token}">reset password</a>`
+            `<a href="http://localhost:3000/changepass/${token}">reset password</a>`
         );
 
         return true;
@@ -183,7 +185,10 @@ export class UserResolver {
         @Arg("password") password: string,
         @Ctx() { req }: Context
     ): Promise<UserResponse> {
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findOne({
+            where: { email },
+            relations: ["notes", "folders"],
+        });
         if (!user) {
             return {
                 errors: [

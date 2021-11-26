@@ -1,7 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useMeQuery } from "../../../generated/graphql";
+import {
+    useForgotPasswordMutation,
+    useLogoutMutation,
+    useMeQuery,
+} from "../../../generated/graphql";
+import { useApolloClient } from "@apollo/client";
+import { useRouter } from "next/router";
 
 interface SettingsModalProps {
     open: boolean;
@@ -13,7 +19,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     setOpen,
 }) => {
     const { data, loading } = useMeQuery();
-    const [name, setName] = useState(data?.me?.name);
+    const [name, setName] = useState(data && !loading ? data?.me?.name : "");
+    const [sentEmailLink, setSentEmailLink] = useState(false);
+    const [forgotPasswordMutation] = useForgotPasswordMutation();
+    const client = useApolloClient();
+    const router = useRouter();
+    const [logout] = useLogoutMutation();
+
+    const forgotPassword = async () => {
+        await forgotPasswordMutation({
+            variables: {
+                email: data?.me?.email || "",
+            },
+        });
+        setSentEmailLink(true);
+    };
+
+    const logUserOut = async () => {
+        await logout();
+        router.push("/");
+        await client.resetStore();
+    };
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog
@@ -69,7 +96,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         alt={data.me?.name}
                                         className="w-20 h-20 mt-2 rounded-full"
                                     />
-                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100">
                                         Upload photo
                                     </button>
                                     <hr className="my-3 border-t border-gray-300" />
@@ -92,6 +119,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                             setName(e.target.value)
                                         }
                                     />
+                                    {data && !loading && name != data.me?.name && (
+                                        <>
+                                            <button className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                                Update
+                                            </button>
+                                        </>
+                                    )}
                                     <hr className="my-3 mt-5 border-t border-gray-300" />
                                     <p className="mb-1 text-sm text-gray-800 ">
                                         Password
@@ -101,13 +135,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         use it
                                     </p>
                                     <div className="flex items-center my-2 mt-4">
-                                        <button className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                        <button
+                                            onClick={forgotPassword}
+                                            className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100"
+                                        >
                                             Change password
                                         </button>
-                                        <p className="p-1 ml-3 text-xs text-gray-500 rounded-sm cursor-pointer hover:bg-gray-100">
-                                            Remove password
-                                        </p>
                                     </div>
+                                    {sentEmailLink && (
+                                        <p className="mt-1 text-sm text-green-500">
+                                            We{"'"}ve sent an email with a link
+                                            to change your password!
+                                        </p>
+                                    )}
                                     <hr className="my-3 mt-5 border-t border-gray-300" />
                                     <p className="mb-1 text-sm text-gray-800 ">
                                         Log out of all devices
@@ -117,7 +157,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         active sessions besides this one and
                                         will have to log back in.
                                     </p>
-                                    <button className="px-3 py-1.5 mt-2 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50">
+                                    <button
+                                        onClick={logUserOut}
+                                        className="px-3 py-1.5 mt-2 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50"
+                                    >
                                         Log out
                                     </button>
                                     <hr className="my-3 mt-5 border-t border-gray-300" />

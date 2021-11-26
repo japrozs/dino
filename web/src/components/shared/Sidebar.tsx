@@ -1,5 +1,9 @@
 import { Fragment, useState } from "react";
-import { useCreateNoteMutation, useMeQuery } from "../../generated/graphql";
+import {
+    useCreateNoteMutation,
+    useLogoutMutation,
+    useMeQuery,
+} from "../../generated/graphql";
 import { BiDotsVerticalRounded, BiPlus, BiCog, BiSearch } from "react-icons/bi";
 import { NoteCard } from "../ui/cards/Note";
 import { FolderCard } from "../ui/cards/Folder";
@@ -18,6 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
     const [createNote] = useCreateNoteMutation();
     const router = useRouter();
     const client = useApolloClient();
+    const [logout] = useLogoutMutation();
 
     const newNote = async () => {
         const note = await createNote({
@@ -27,6 +32,12 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
         });
         const id = note.data?.createNote.id;
         router.push(`/app/n/${id}`);
+        await client.resetStore();
+    };
+
+    const logUserOut = async () => {
+        await logout();
+        router.push("/");
         await client.resetStore();
     };
 
@@ -81,7 +92,10 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                             </p>
                                         </div>
                                     </div>
-                                    <p className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                    <p
+                                        onClick={logUserOut}
+                                        className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                    >
                                         Log out
                                     </p>
                                 </div>
