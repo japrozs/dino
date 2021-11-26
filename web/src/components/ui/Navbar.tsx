@@ -141,7 +141,6 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
             (async () => {
                 await client.resetStore();
             })();
-            alert("here.");
             return;
         }
 
@@ -191,8 +190,8 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                         <div className="w-32">
                             <Listbox value={selected} onChange={setSelected}>
                                 <div className="relative mt-1">
-                                    <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10 text-left bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
-                                        <span className="block font-medium truncate">
+                                    <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10  bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
+                                        <span className="block w-full truncate menlo">
                                             {selected}
                                         </span>
                                     </Listbox.Button>
@@ -209,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                                                     value={folder.name}
                                                     key={folder.id}
                                                 >
-                                                    <span className="block font-medium truncate">
+                                                    <span className="block truncate menlo">
                                                         {folder.name}
                                                     </span>
                                                 </Listbox.Option>
@@ -218,7 +217,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                                                 className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100"
                                                 value={"No Folder"}
                                             >
-                                                <span className="block font-medium truncate">
+                                                <span className="block truncate menlo">
                                                     No Folder
                                                 </span>
                                             </Listbox.Option>
