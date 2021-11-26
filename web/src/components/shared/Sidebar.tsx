@@ -142,6 +142,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                 id={folder.id}
                                 name={folder.name}
                                 notes={folder.noteIds}
+                                color={folder.color}
                             />
                         ))}
                         <div className="flex items-center px-2 mt-3 mb-1 group">
@@ -156,14 +157,16 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                 className="w-5 h-5 ml-auto mr-0 text-gray-600 transition border border-gray-400 rounded-sm opacity-0 cursor-pointer group-hover:opacity-100 hover:border-gray-500"
                             />
                         </div>
-                        {data.me?.notes.map((note) => (
-                            <NoteCard
-                                key={note.id}
-                                name={note.title}
-                                status={note.status}
-                                id={note.id}
-                            />
-                        ))}
+                        <div className="max-h-full overflow-y-scroll">
+                            {data.me?.notes.map((note) => (
+                                <NoteCard
+                                    key={note.id}
+                                    name={note.title}
+                                    status={note.status}
+                                    id={note.id}
+                                />
+                            ))}
+                        </div>
                     </nav>
                 </div>
             ) : (

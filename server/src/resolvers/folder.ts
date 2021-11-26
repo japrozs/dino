@@ -2,6 +2,7 @@ import { Folder } from "../entities/Folder";
 import { isAuth } from "../middleware/isAuth";
 import { Context } from "../types";
 import { Arg, Ctx, Int, Mutation, UseMiddleware } from "type-graphql";
+import { chooseRandomFolderColor } from "../utils/chooseRandomFolderColor";
 
 export class FolderResolver {
     @UseMiddleware(isAuth)
@@ -14,6 +15,7 @@ export class FolderResolver {
             name,
             noteIds: [],
             creatorId: req.session.userId,
+            color: chooseRandomFolderColor(),
         }).save();
         return true;
     }

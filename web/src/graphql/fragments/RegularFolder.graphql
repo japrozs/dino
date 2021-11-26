@@ -1,6 +1,7 @@
 fragment RegularFolder on Folder {
     id
     name
+    color
     noteIds
     creatorId
     createdAt

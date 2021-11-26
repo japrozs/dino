@@ -347,6 +347,13 @@ code {
     background-color: var(--red-500);
 }
 
+.colored-circle {
+    display: inline-block;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+}
+
 .editor h1 {
     font-size: 1.8em;
     font-weight: 600;

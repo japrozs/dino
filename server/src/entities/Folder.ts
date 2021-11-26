@@ -21,6 +21,10 @@ export class Folder extends BaseEntity {
     @Column()
     name: string;
 
+    @Field()
+    @Column()
+    color: string;
+
     @Field(() => [String])
     @Column("simple-array")
     noteIds: string[];

@@ -12,14 +12,21 @@ import NextLink from "next/link";
 import { MdOutlineDelete } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { useApolloClient } from "@apollo/client";
+import { ColoredCircle } from "../ColoredCircle";
 
 interface FolderCardProps {
     name: string;
     notes: string[];
     id: number;
+    color: string;
 }
 
-export const FolderCard: React.FC<FolderCardProps> = ({ name, notes, id }) => {
+export const FolderCard: React.FC<FolderCardProps> = ({
+    name,
+    notes,
+    id,
+    color,
+}) => {
     const [showContents, setShowContents] = useState(false);
     const [deleteFolderMutation] = useDeleteFolderMutation();
     const client = useApolloClient();
@@ -44,7 +51,8 @@ export const FolderCard: React.FC<FolderCardProps> = ({ name, notes, id }) => {
                 ) : (
                     <BiCaretRight className="mr-1 text-sm text-gray-700" />
                 )}
-                <p className="text-sm font-medium text-gray-700 truncate">
+                <ColoredCircle color={color} />
+                <p className="ml-1.5 text-sm font-medium text-gray-700 truncate">
                     {name}
                 </p>
                 <Menu as="div" className={"ml-auto mr-0"}>
@@ -99,26 +107,10 @@ export const FolderNoteCard: React.FC<FolderNoteCardProps> = ({ id }) => {
             id: parseInt(id),
         },
     });
-    let dotColor = "";
-    switch (data?.getNote.status) {
-        case "active":
-            dotColor = "green";
-            break;
-        case "inactive":
-            dotColor = "gray";
-            break;
-        case "deleted":
-            dotColor = "red";
-            break;
-        default:
-            dotColor = "green";
-            break;
-    }
     return (
         <NextLink href={`/app/n/${id}`}>
             <a>
                 <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200">
-                    <div className={`mr-2 colored-circle-${dotColor}`}></div>
                     <p className="text-sm font-medium text-gray-700 truncate">
                         {data?.getNote.title}
                     </p>

@@ -23,6 +23,7 @@ export type FieldError = {
 
 export type Folder = {
   __typename?: 'Folder';
+  color: Scalars['String'];
   createdAt: Scalars['String'];
   creator: User;
   creatorId: Scalars['Float'];
@@ -171,13 +172,13 @@ export type UserResponse = {
 
 export type RegularErrorFragment = { __typename?: 'FieldError', field: string, message: string };
 
-export type RegularFolderFragment = { __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string };
+export type RegularFolderFragment = { __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string };
 
 export type RegularNoteFragment = { __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string };
 
-export type RegularUserFragment = { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> };
+export type RegularUserFragment = { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> };
 
-export type RegularUserResponseFragment = { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined };
+export type RegularUserResponseFragment = { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined };
 
 export type AddNoteToFolderMutationVariables = Exact<{
   folderId: Scalars['Int'];
@@ -193,7 +194,7 @@ export type ChangePasswordMutationVariables = Exact<{
 }>;
 
 
-export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
+export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
 
 export type CreateFolderMutationVariables = Exact<{
   name: Scalars['String'];
@@ -244,7 +245,7 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -256,7 +257,7 @@ export type RegisterMutationVariables = Exact<{
 }>;
 
 
-export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
+export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
 
 export type UpdateNameMutationVariables = Exact<{
   name: Scalars['String'];
@@ -291,7 +292,7 @@ export type GetNoteQuery = { __typename?: 'Query', getNote: { __typename?: 'Note
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined };
+export type MeQuery = { __typename?: 'Query', me?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, color: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined };
 
 export const RegularErrorFragmentDoc = gql`
     fragment RegularError on FieldError {
@@ -314,6 +315,7 @@ export const RegularFolderFragmentDoc = gql`
     fragment RegularFolder on Folder {
   id
   name
+  color
   noteIds
   creatorId
   createdAt
