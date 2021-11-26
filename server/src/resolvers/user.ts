@@ -6,6 +6,7 @@ import {
     Ctx,
     ObjectType,
     Query,
+    UseMiddleware,
 } from "type-graphql";
 import { Context } from "../types";
 import { User } from "../entities/User";
@@ -16,6 +17,7 @@ import { validateRegister } from "../utils/validateRegister";
 import { sendEmail } from "../utils/sendEmail";
 import { v4 } from "uuid";
 import { getConnection } from "typeorm";
+import { isAuth } from "../middleware/isAuth";
 
 @ObjectType()
 export class FieldError {
@@ -232,5 +234,17 @@ export class UserResolver {
                 resolve(true);
             })
         );
+    }
+
+    @UseMiddleware(isAuth)
+    @Mutation(() => Boolean)
+    async updateName(@Arg("name") name: string, @Ctx() { req }: Context) {
+        await User.update(
+            { id: req.session.userId },
+            {
+                name,
+            }
+        );
+        return true;
     }
 }

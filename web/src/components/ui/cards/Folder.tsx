@@ -66,10 +66,10 @@ export const FolderCard: React.FC<FolderCardProps> = ({ name, notes, id }) => {
                             <div className="flex items-center py-1">
                                 <div
                                     onClick={deleteFolder}
-                                    className="flex items-center w-full px-2 py-1 hover:bg-gray-100 hover:text-gray-800"
+                                    className="flex items-center w-full px-2 py-2 hover:bg-gray-100 hover:text-gray-800"
                                 >
-                                    <MdOutlineDelete className="w-4 h-4 mr-1 text-gray-500" />
-                                    <p className="text-sm font-medium text-gray-500 cursor-pointer ">
+                                    <MdOutlineDelete className="w-4 h-4 mr-1 text-gray-700" />
+                                    <p className="text-sm font-medium text-gray-700 cursor-pointer ">
                                         Delete
                                     </p>
                                 </div>

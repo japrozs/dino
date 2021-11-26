@@ -1,0 +1,3 @@
+mutation updateName($name: String!) {
+    updateName(name: $name)
+}

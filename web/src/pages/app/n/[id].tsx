@@ -4,6 +4,8 @@ import { Spinner } from "../../../components/shared/Spinner";
 import { Wrapper } from "../../../components/shared/Wrapper";
 import { Editor } from "../../../components/ui/editor/editor";
 import { useGetNoteQuery } from "../../../generated/graphql";
+import Head from "next/head";
+import { Meta } from "../../../components/shared/Meta";
 
 interface NotePageProps {}
 
@@ -17,9 +19,19 @@ const NotePage: React.FC<NotePageProps> = ({}) => {
         },
     });
     return (
-        <Wrapper>
-            {data && !loading ? <Editor note={data?.getNote} /> : <Spinner />}
-        </Wrapper>
+        <>
+            <Head>
+                <Meta title={data?.getNote.title || ""} />
+                <title>{data?.getNote.title} - Dino</title>
+            </Head>
+            <Wrapper>
+                {data && !loading ? (
+                    <Editor note={data?.getNote} />
+                ) : (
+                    <Spinner />
+                )}
+            </Wrapper>
+        </>
     );
 };
 

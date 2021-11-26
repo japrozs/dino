@@ -56,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                     alt={data.me?.name}
                                     className="w-6 h-6 rounded-sm"
                                 />
-                                <p className="ml-3 text-sm font-medium text-gray-800">
+                                <p className="ml-3 text-sm font-medium text-gray-800 truncate">
                                     {data.me?.name}
                                 </p>
                                 <BiDotsVerticalRounded className="ml-auto mr-1 text-lg text-gray-800" />

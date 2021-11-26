@@ -45,6 +45,7 @@ export type Mutation = {
   login: UserResponse;
   logout: Scalars['Boolean'];
   register: UserResponse;
+  updateName: Scalars['Boolean'];
   updateNote: Scalars['Boolean'];
   updateNoteTitle: Scalars['Boolean'];
 };
@@ -101,6 +102,11 @@ export type MutationLoginArgs = {
 
 export type MutationRegisterArgs = {
   options: UserInput;
+};
+
+
+export type MutationUpdateNameArgs = {
+  name: Scalars['String'];
 };
 
 
@@ -251,6 +257,13 @@ export type RegisterMutationVariables = Exact<{
 
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename: 'User', id: number, name: string, theme: string, imgUrl: string, email: string, createdAt: string, updatedAt: string, notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string }>, folders: Array<{ __typename?: 'Folder', id: number, name: string, noteIds: Array<string>, creatorId: number, createdAt: string, updatedAt: string }> } | null | undefined } };
+
+export type UpdateNameMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type UpdateNameMutation = { __typename?: 'Mutation', updateName: boolean };
 
 export type UpdateNoteMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -689,6 +702,37 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const UpdateNameDocument = gql`
+    mutation updateName($name: String!) {
+  updateName(name: $name)
+}
+    `;
+export type UpdateNameMutationFn = Apollo.MutationFunction<UpdateNameMutation, UpdateNameMutationVariables>;
+
+/**
+ * __useUpdateNameMutation__
+ *
+ * To run a mutation, you first call `useUpdateNameMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateNameMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateNameMutation, { data, loading, error }] = useUpdateNameMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useUpdateNameMutation(baseOptions?: Apollo.MutationHookOptions<UpdateNameMutation, UpdateNameMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateNameMutation, UpdateNameMutationVariables>(UpdateNameDocument, options);
+      }
+export type UpdateNameMutationHookResult = ReturnType<typeof useUpdateNameMutation>;
+export type UpdateNameMutationResult = Apollo.MutationResult<UpdateNameMutation>;
+export type UpdateNameMutationOptions = Apollo.BaseMutationOptions<UpdateNameMutation, UpdateNameMutationVariables>;
 export const UpdateNoteDocument = gql`
     mutation updateNote($id: Int!, $body: String!) {
   updateNote(id: $id, body: $body)

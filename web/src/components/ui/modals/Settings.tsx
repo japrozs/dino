@@ -5,6 +5,7 @@ import {
     useForgotPasswordMutation,
     useLogoutMutation,
     useMeQuery,
+    useUpdateNameMutation,
 } from "../../../generated/graphql";
 import { useApolloClient } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -25,6 +26,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     const client = useApolloClient();
     const router = useRouter();
     const [logout] = useLogoutMutation();
+    const [updateNameMutation] = useUpdateNameMutation();
 
     const forgotPassword = async () => {
         await forgotPasswordMutation({
@@ -38,6 +40,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     const logUserOut = async () => {
         await logout();
         router.push("/");
+        await client.resetStore();
+    };
+
+    const updateName = async () => {
+        await updateNameMutation({
+            variables: {
+                name: name || data?.me?.name || "",
+            },
+        });
         await client.resetStore();
     };
 
@@ -121,7 +132,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     />
                                     {data && !loading && name != data.me?.name && (
                                         <>
-                                            <button className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                            <button
+                                                onClick={updateName}
+                                                className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100"
+                                            >
                                                 Update
                                             </button>
                                         </>
@@ -143,7 +157,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         </button>
                                     </div>
                                     {sentEmailLink && (
-                                        <p className="mt-1 text-sm text-green-500">
+                                        <p className="mt-1 text-sm font-medium text-green-500">
                                             We{"'"}ve sent an email with a link
                                             to change your password!
                                         </p>
