@@ -7,6 +7,8 @@ Dino is a new website, mobile app and desktop app to jot down your thoughts and 
 ![Screenshot](assets/dino.png)
 ![Screenshot](assets/menu.png)
 ![Screenshot](assets/modal.png)
+![Screenshot](assets/quickfind.png)
+![Screenshot](assets/sidebar.png)
 
 ## Features
 
