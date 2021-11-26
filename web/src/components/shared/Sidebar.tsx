@@ -139,6 +139,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                         {data.me?.folders.map((folder) => (
                             <FolderCard
                                 key={folder.id}
+                                id={folder.id}
                                 name={folder.name}
                                 notes={folder.noteIds}
                             />

@@ -66,4 +66,19 @@ export class FolderResolver {
 
         return true;
     }
+
+    @UseMiddleware(isAuth)
+    @Mutation(() => Boolean)
+    async deleteFolder(
+        @Arg("id", () => Int) id: number,
+        @Ctx() { req }: Context
+    ) {
+        const fold = await Folder.findOne(id, { relations: ["creator"] });
+        if (fold?.creator.id != req.session.userId) {
+            return false;
+        }
+
+        await Folder.delete({ id });
+        return true;
+    }
 }

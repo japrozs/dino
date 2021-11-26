@@ -38,6 +38,7 @@ export type Mutation = {
   changePassword: UserResponse;
   createFolder: Scalars['Boolean'];
   createNote: Note;
+  deleteFolder: Scalars['Boolean'];
   deleteNote: Scalars['Boolean'];
   deleteNoteFromFolder: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
@@ -68,6 +69,11 @@ export type MutationCreateFolderArgs = {
 
 export type MutationCreateNoteArgs = {
   title: Scalars['String'];
+};
+
+
+export type MutationDeleteFolderArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -196,6 +202,13 @@ export type CreateNoteMutationVariables = Exact<{
 
 
 export type CreateNoteMutation = { __typename?: 'Mutation', createNote: { __typename?: 'Note', id: number, title: string, body: string, status: string, creatorId: number, createdAt: string, updatedAt: string } };
+
+export type DeleteFolderMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeleteFolderMutation = { __typename?: 'Mutation', deleteFolder: boolean };
 
 export type DeleteNoteMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -454,6 +467,37 @@ export function useCreateNoteMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateNoteMutationHookResult = ReturnType<typeof useCreateNoteMutation>;
 export type CreateNoteMutationResult = Apollo.MutationResult<CreateNoteMutation>;
 export type CreateNoteMutationOptions = Apollo.BaseMutationOptions<CreateNoteMutation, CreateNoteMutationVariables>;
+export const DeleteFolderDocument = gql`
+    mutation deleteFolder($id: Int!) {
+  deleteFolder(id: $id)
+}
+    `;
+export type DeleteFolderMutationFn = Apollo.MutationFunction<DeleteFolderMutation, DeleteFolderMutationVariables>;
+
+/**
+ * __useDeleteFolderMutation__
+ *
+ * To run a mutation, you first call `useDeleteFolderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteFolderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteFolderMutation, { data, loading, error }] = useDeleteFolderMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteFolderMutation(baseOptions?: Apollo.MutationHookOptions<DeleteFolderMutation, DeleteFolderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteFolderMutation, DeleteFolderMutationVariables>(DeleteFolderDocument, options);
+      }
+export type DeleteFolderMutationHookResult = ReturnType<typeof useDeleteFolderMutation>;
+export type DeleteFolderMutationResult = Apollo.MutationResult<DeleteFolderMutation>;
+export type DeleteFolderMutationOptions = Apollo.BaseMutationOptions<DeleteFolderMutation, DeleteFolderMutationVariables>;
 export const DeleteNoteDocument = gql`
     mutation deleteNote($id: Int!) {
   deleteNote(id: $id)
