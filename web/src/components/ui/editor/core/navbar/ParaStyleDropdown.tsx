@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
-const PARAGRAPH_STYLES = ["h1", "h2", "h3", "h4", "paragraph", "multiple"];
+const PARAGRAPH_STYLES = ["H1", "H2", "H3", "H4", "Paragraph", "Multiple"];
 
 export const ParaStyleDropDown: React.FC<{ onChange: any; initialValue: any }> =
     ({ onChange, initialValue }) => {
@@ -11,12 +11,9 @@ export const ParaStyleDropDown: React.FC<{ onChange: any; initialValue: any }> =
                     <div className="w-48">
                         <Listbox value={initialValue} onChange={onChange}>
                             <div className="relative mt-1">
-                                <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-                                    <span className="block truncate">
+                                <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10 text-left bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
+                                    <span className="block text-gray-800 truncate menlo">
                                         {initialValue}
-                                    </span>
-                                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                        {"<>"}
                                     </span>
                                 </Listbox.Button>
                                 <Transition
@@ -29,10 +26,10 @@ export const ParaStyleDropDown: React.FC<{ onChange: any; initialValue: any }> =
                                         {PARAGRAPH_STYLES.map((style, i) => (
                                             <Listbox.Option
                                                 key={i}
-                                                className="relative py-2 pl-10 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100"
+                                                className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100"
                                                 value={style}
                                             >
-                                                <span className="block font-normal truncate">
+                                                <span className="block font-normal text-gray-800 truncate menlo">
                                                     {style}
                                                 </span>
                                             </Listbox.Option>

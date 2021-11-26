@@ -178,19 +178,22 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                     editor={editor}
                 />
             ))}
-            {saving ? <p>Saving...</p> : <p>Saved</p>}
+            {saving ? (
+                <p className="ml-2 text-sm font-medium text-gray-600">
+                    Saving...
+                </p>
+            ) : (
+                <p className="ml-2 text-sm font-medium text-gray-600">Saved</p>
+            )}
             <div className="flex items-center ml-auto mr-2">
                 {data && !loading && (
                     <>
                         <div className="w-32">
                             <Listbox value={selected} onChange={setSelected}>
                                 <div className="relative mt-1">
-                                    <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10 text-left bg-gray-100 rounded-sm cursor-pointer sm:text-sm">
-                                        <span className="block font-normal truncate">
+                                    <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10 text-left bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
+                                        <span className="block font-medium truncate">
                                             {selected}
-                                        </span>
-                                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                            {"<>"}
                                         </span>
                                     </Listbox.Button>
                                     <Transition
@@ -215,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                                                 className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100"
                                                 value={"No Folder"}
                                             >
-                                                <span className="block font-normal truncate">
+                                                <span className="block font-medium truncate">
                                                     No Folder
                                                 </span>
                                             </Listbox.Option>
