@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment, useState } from "react";
 import {
     useCreateNoteMutation,
@@ -12,6 +13,7 @@ import { useRouter } from "next/router";
 import { useApolloClient } from "@apollo/client";
 import { Menu, Transition } from "@headlessui/react";
 import { SettingsModal } from "../ui/modals/Settings";
+import { QuickFindModal } from "../ui/modals/QuickFind";
 
 interface SidebarProps {}
 
@@ -19,6 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
     const { data, loading } = useMeQuery();
     const [open, setOpen] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [findOpen, setFindOpen] = useState(false);
     const [createNote] = useCreateNoteMutation();
     const router = useRouter();
     const client = useApolloClient();
@@ -102,7 +105,10 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                             </Menu.Items>
                         </Transition>
                     </Menu>
-                    <div className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200">
+                    <div
+                        onClick={() => setFindOpen(true)}
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200"
+                    >
                         <BiSearch className="w-4 h-4 text-gray-500" />
                         <p className="ml-2 text-sm font-medium text-gray-700">
                             Quick Find
@@ -164,6 +170,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
             )}
             <FolderModal open={open} setOpen={setOpen} />
             <SettingsModal open={settingsOpen} setOpen={setSettingsOpen} />
+            <QuickFindModal open={findOpen} setOpen={setFindOpen} />
         </>
     );
 };
