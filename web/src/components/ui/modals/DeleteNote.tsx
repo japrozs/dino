@@ -65,23 +65,23 @@ export const DeleteNoteModal: React.FC<DeleteNoteModalProps> = ({
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block p-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                            <code>
-                                are you sure you want to delete this note ?
-                            </code>
+                        <div className="inline-block p-3 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                            <p className="font-medium text-gray-800 text-md">
+                                Are you sure you want to delete this note ?
+                            </p>
                             <div className="flex items-center justify-end mt-2">
-                                <p
+                                <button
                                     onClick={() => setOpen(false)}
-                                    className="mr-3 text-red-500 cursor-pointer hover:bg-gray-200 py-1.5 px-2 rounded-sm menlo"
+                                    className="px-3 py-1.5 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50"
                                 >
-                                    cancel
-                                </p>
-                                <p
+                                    Log out
+                                </button>
+                                <button
                                     onClick={deleteNote}
-                                    className="text-green-500 hover:bg-gray-200 py-1.5 px-2 rounded-sm cursor-pointer menlo"
+                                    className="px-3 py-1.5 ml-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100"
                                 >
-                                    yes, i{"'"}m sure
-                                </p>
+                                    Yes, delete
+                                </button>
                             </div>
                         </div>
                     </Transition.Child>

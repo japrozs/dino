@@ -6,10 +6,12 @@ import { Editor } from "../../../components/ui/editor/editor";
 import { useGetNoteQuery } from "../../../generated/graphql";
 import Head from "next/head";
 import { Meta } from "../../../components/shared/Meta";
+import { useIsAuth } from "../../../utils/useIsAuth";
 
 interface NotePageProps {}
 
 const NotePage: React.FC<NotePageProps> = ({}) => {
+    useIsAuth();
     const router = useRouter();
     const id =
         typeof router.query.id == "string" ? parseInt(router.query.id) : -1;
