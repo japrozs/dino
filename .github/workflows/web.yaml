@@ -1,4 +1,4 @@
-name: Build Website
+name: Build web
 
 on:
     push:
@@ -13,4 +13,4 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
-            - run: cd web && yarn && yarn build
+            - run: cd web && yarn add -D typescript && yarn install && yarn lint
