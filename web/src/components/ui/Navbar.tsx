@@ -190,8 +190,8 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                         <div className="w-32">
                             <Listbox value={selected} onChange={setSelected}>
                                 <div className="relative mt-1">
-                                    <Listbox.Button className="relative w-full py-1.5 pl-3 pr-10  bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
-                                        <span className="block w-full truncate menlo">
+                                    <Listbox.Button className="text-left relative w-full py-1.5 pl-3  bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100">
+                                        <span className="block truncate menlo">
                                             {selected}
                                         </span>
                                     </Listbox.Button>

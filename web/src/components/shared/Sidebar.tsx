@@ -14,6 +14,7 @@ import { useApolloClient } from "@apollo/client";
 import { Menu, Transition } from "@headlessui/react";
 import { SettingsModal } from "../ui/modals/Settings";
 import { QuickFindModal } from "../ui/modals/QuickFind";
+import { Spinner } from "./Spinner";
 
 interface SidebarProps {}
 
@@ -170,7 +171,9 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                     </nav>
                 </div>
             ) : (
-                <></>
+                <div className="flex flex-col items-center justify-center w-64 max-w-full min-h-screen bg-gray-100">
+                    <Spinner />
+                </div>
             )}
             <FolderModal open={open} setOpen={setOpen} />
             <SettingsModal open={settingsOpen} setOpen={setSettingsOpen} />

@@ -30,7 +30,9 @@ const NotePage: React.FC<NotePageProps> = ({}) => {
                 {data && !loading ? (
                     <Editor note={data?.getNote} />
                 ) : (
-                    <Spinner />
+                    <div className="flex flex-col items-center justify-center max-w-full min-h-screen">
+                        <Spinner />
+                    </div>
                 )}
             </Wrapper>
         </>
