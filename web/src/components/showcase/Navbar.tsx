@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React, { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BiMenu } from "react-icons/bi";
@@ -6,10 +7,10 @@ import NextLink from "next/link";
 
 interface NavbarProps {}
 const navigation = [
-    { name: "Product", href: "#", current: false },
-    { name: "Download", href: "#", current: false },
-    { name: "Pricing", href: "#", current: false },
-    { name: "Community", href: "#", current: false },
+    { name: "Product", href: "/product", current: false },
+    { name: "Download", href: "/download", current: false },
+    { name: "Pricing", href: "/pricing", current: false },
+    { name: "Community", href: "/community", current: false },
 ];
 
 function classNames(...classes: any[]) {
@@ -52,53 +53,209 @@ export const ShowcaseNavbar: React.FC<NavbarProps> = ({}) => {
                             </div>
                             <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                                 <div className="flex items-center flex-shrink-0">
-                                    <img
+                                    <svg
                                         className="block w-auto h-11 lg:hidden"
-                                        src="https://www.notion.so/cdn-cgi/image/format=auto,width=256,quality=100/front-static/shared/icons/notion-app-icon-3d.png"
-                                        alt="Workflow"
-                                    />
+                                        width="171"
+                                        height="171"
+                                        viewBox="0 0 171 171"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g filter="url(#filter0_d_22_34)">
+                                            <rect
+                                                x="4"
+                                                width="163"
+                                                height="163"
+                                                rx="26"
+                                                fill="#FCFAFA"
+                                            />
+                                            <path
+                                                d="M65.5854 61.6991V7.59353L85.719 27.2531V82.2923L65.5854 61.6991Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M105.415 101.301V155.406L85.281 135.747V80.7077L105.415 101.301Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M64.7449 101.398L10.5942 101.398L30.2698 81.2814L85.3549 81.2814L64.7449 101.398Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M139.776 81.7186L85.6252 81.7186L105.301 61.6022L160.386 61.6022L139.776 81.7186Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M123.777 43.9087L104.112 62.6428L104.113 35.6888L123.777 16.9546L123.777 43.9087Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M65.6277 127.311L45.9634 146.045L45.9635 119.091L65.6277 100.357L65.6277 127.311Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M46.9402 41.9541L65.7581 61.537L38.7817 61.6304L19.9638 42.0476L46.9402 41.9541Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <path
+                                                d="M132.288 100.992L151.106 120.575L124.129 120.668L105.312 101.085L132.288 100.992Z"
+                                                fill="#252020"
+                                                stroke="white"
+                                                stroke-width="0.5"
+                                            />
+                                            <rect
+                                                x="7.5"
+                                                y="3.5"
+                                                width="156"
+                                                height="156"
+                                                rx="25.5"
+                                                stroke="#E3DFDF"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <filter
+                                                id="filter0_d_22_34"
+                                                x="0"
+                                                y="0"
+                                                width="171"
+                                                height="171"
+                                                filterUnits="userSpaceOnUse"
+                                                color-interpolation-filters="sRGB"
+                                            >
+                                                <feFlood
+                                                    flood-opacity="0"
+                                                    result="BackgroundImageFix"
+                                                />
+                                                <feColorMatrix
+                                                    in="SourceAlpha"
+                                                    type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                    result="hardAlpha"
+                                                />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stdDeviation="2" />
+                                                <feComposite
+                                                    in2="hardAlpha"
+                                                    operator="out"
+                                                />
+                                                <feColorMatrix
+                                                    type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                                                />
+                                                <feBlend
+                                                    mode="normal"
+                                                    in2="BackgroundImageFix"
+                                                    result="effect1_dropShadow_22_34"
+                                                />
+                                                <feBlend
+                                                    mode="normal"
+                                                    in="SourceGraphic"
+                                                    in2="effect1_dropShadow_22_34"
+                                                    result="shape"
+                                                />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+
                                     <svg
                                         className="hidden w-auto h-8 lg:block"
-                                        width="87"
-                                        height="30"
-                                        viewBox="0 0 87 30"
+                                        width="414"
+                                        height="159"
+                                        viewBox="0 0 414 159"
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path
-                                            d="M1.805 1.294l16.6-1.226c2.039-.175 2.563-.057 3.845.875l5.299 3.733c.874.642 1.165.817 1.165 1.516v20.473c0 1.283-.466 2.042-2.097 2.158L7.34 29.99c-1.224.058-1.807-.117-2.448-.934L.99 23.982c-.7-.934-.99-1.633-.99-2.45V3.334c0-1.049.466-1.924 1.805-2.04z"
-                                            fill="#fff"
-                                        ></path>
+                                            d="M59.25 58.377V0.593877L80.75 21.6052V80.3863L59.25 58.377Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
                                         <path
-                                            d="M18.405.068l-16.6 1.226C.466 1.41 0 2.285 0 3.334v18.198c0 .817.29 1.516.99 2.45l3.902 5.074c.641.817 1.224.992 2.448.934l19.277-1.167c1.63-.116 2.097-.875 2.097-2.158V6.192c0-.663-.262-.854-1.033-1.42a85.473 85.473 0 01-.133-.096L22.25.943c-1.282-.932-1.806-1.05-3.845-.875zM7.776 5.857c-1.574.106-1.931.13-2.825-.597L2.678 3.452c-.231-.234-.115-.526.467-.584l15.958-1.166c1.34-.117 2.038.35 2.562.758l2.737 1.983c.117.059.408.408.058.408l-16.48.992-.204.014zM5.941 26.49V9.11c0-.759.233-1.109.931-1.168L25.8 6.834c.642-.058.932.35.932 1.108v17.264c0 .759-.117 1.401-1.165 1.459l-18.113 1.05c-1.048.058-1.513-.291-1.513-1.225zm17.88-16.448c.116.525 0 1.05-.525 1.11l-.873.173v12.832c-.758.408-1.456.641-2.039.641-.932 0-1.165-.292-1.863-1.166l-5.709-8.982v8.69l1.806.409s0 1.05-1.457 1.05l-4.017.233c-.117-.234 0-.817.407-.933l1.049-.291v-11.49L9.144 12.2c-.117-.525.174-1.283.99-1.342l4.31-.29 5.94 9.098v-8.049l-1.514-.174c-.117-.643.349-1.11.931-1.167l4.02-.234z"
-                                            fill="#000"
-                                        ></path>
+                                            d="M101.75 100.623V158.406L80.25 137.395V78.6137L101.75 100.623Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
                                         <path
-                                            d="M41.434 21.251v-7.91h.137l5.704 7.91h1.796V9.627h-1.997v7.902h-.137l-5.704-7.902H39.43V21.25h2.005zM54.715 21.429c2.635 0 4.238-1.724 4.238-4.584 0-2.852-1.611-4.584-4.238-4.584-2.618 0-4.237 1.74-4.237 4.584 0 2.86 1.595 4.584 4.237 4.584zm0-1.676c-1.393 0-2.19-1.063-2.19-2.908 0-1.837.797-2.908 2.19-2.908 1.386 0 2.183 1.071 2.183 2.908 0 1.845-.789 2.908-2.183 2.908zM60.778 10.28v2.215h-1.393v1.595h1.393v4.809c0 1.708.806 2.393 2.828 2.393.386 0 .757-.04 1.047-.097v-1.563c-.242.024-.395.04-.677.04-.837 0-1.208-.386-1.208-1.256V14.09h1.885v-1.595h-1.885v-2.216h-1.99zM65.85 21.251h1.99v-8.813h-1.99v8.813zm.991-10.27c.66 0 1.192-.533 1.192-1.201 0-.669-.531-1.209-1.192-1.209-.652 0-1.192.54-1.192 1.209 0 .668.54 1.2 1.192 1.2zM73.299 21.429c2.634 0 4.237-1.724 4.237-4.584 0-2.852-1.611-4.584-4.237-4.584-2.619 0-4.238 1.74-4.238 4.584 0 2.86 1.595 4.584 4.238 4.584zm0-1.676c-1.394 0-2.192-1.063-2.192-2.908 0-1.837.798-2.908 2.192-2.908 1.385 0 2.183 1.071 2.183 2.908 0 1.845-.79 2.908-2.183 2.908zM78.725 21.251h1.998V16.12c0-1.297.75-2.119 1.941-2.119 1.217 0 1.78.677 1.78 2.022v5.228h1.999v-5.703c0-2.103-1.072-3.287-3.037-3.287-1.314 0-2.2.604-2.619 1.587h-.137v-1.41h-1.925v8.813z"
-                                            fill="#000"
-                                        ></path>
+                                            d="M58.377 100.75L0.593877 100.75L21.6052 79.25L80.3863 79.25L58.377 100.75Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M138.377 79.75L80.5939 79.75L101.605 58.25L160.386 58.25L138.377 79.75Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M121.328 39.3929L100.328 59.4162L100.329 30.6071L121.328 10.5838L121.328 39.3929Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M59.3284 128.393L38.3284 148.416L38.3285 119.607L59.3284 99.5838L59.3284 128.393Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M39.3937 37.2833L59.4897 58.2137L30.6807 58.3135L10.5847 37.3833L39.3937 37.2833Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M130.394 100.283L150.49 121.214L121.681 121.314L101.585 100.383L130.394 100.283Z"
+                                            fill="#252020"
+                                            stroke="white"
+                                            stroke-width="0.5"
+                                        />
+                                        <path
+                                            d="M207.573 118H234.85C257.209 118 270.355 104.129 270.355 80.4756V80.3721C270.355 56.7705 257.105 43.3135 234.85 43.3135H207.573V118ZM220.927 106.717V54.5967H233.452C248.307 54.5967 256.743 63.7578 256.743 80.4238V80.5273C256.743 97.5557 248.462 106.717 233.452 106.717H220.927ZM286.504 55.2695C290.541 55.2695 293.646 52.0605 293.646 48.2305C293.646 44.2969 290.541 41.1396 286.504 41.1396C282.467 41.1396 279.31 44.2969 279.31 48.2305C279.31 52.0605 282.467 55.2695 286.504 55.2695ZM280.034 118H292.922V63.1367H280.034V118ZM303.895 118H316.782V86.1689C316.782 78.25 321.492 72.8672 328.894 72.8672C336.243 72.8672 339.866 77.2666 339.866 85.082V118H352.754V82.4941C352.754 69.7617 345.87 61.998 333.811 61.998C325.478 61.998 319.888 65.8281 317.041 71.7285H316.782V63.1367H303.895V118ZM387.38 119.087C403.477 119.087 413.932 108.373 413.932 90.5684V90.4648C413.932 72.7637 403.321 61.998 387.328 61.998C371.387 61.998 360.828 72.8672 360.828 90.4648V90.5684C360.828 108.321 371.231 119.087 387.38 119.087ZM387.432 108.684C379.202 108.684 373.975 102.11 373.975 90.5684V90.4648C373.975 79.0781 379.306 72.4531 387.328 72.4531C395.506 72.4531 400.785 79.0264 400.785 90.4648V90.5684C400.785 102.059 395.558 108.684 387.432 108.684Z"
+                                            fill="black"
+                                        />
                                     </svg>
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <NextLink
                                                 key={item.name}
                                                 href={item.href}
-                                                className={classNames(
-                                                    item.current
-                                                        ? "bg-gray-100 text-black"
-                                                        : "text-gray-900 hover:bg-gray-100 ",
-                                                    "px-3 py-2 rounded-sm text-sm font-medium"
-                                                )}
                                             >
-                                                {item.name}
-                                            </a>
+                                                <a
+                                                    className={classNames(
+                                                        item.current
+                                                            ? "bg-gray-100 text-black"
+                                                            : "text-gray-900 hover:bg-gray-100 ",
+                                                        "px-3 py-2 rounded-sm text-sm font-medium"
+                                                    )}
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            </NextLink>
                                         ))}
                                     </div>
                                 </div>
                             </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            <div className="absolute inset-y-0 right-0 flex items-center hidden pr-0 sm:block sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 <NextLink href="/login">
                                     <a>
                                         <button className="font-medium px-3 py-1.5 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
@@ -108,7 +265,7 @@ export const ShowcaseNavbar: React.FC<NavbarProps> = ({}) => {
                                 </NextLink>
                                 <NextLink href="/register">
                                     <a>
-                                        <button className="hidden sm:block font-medium ml-3 px-3 py-1.5 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
+                                        <button className="font-medium ml-3 px-3 py-1.5 text-sm border border-gray-300 rounded-sm hover:bg-gray-100">
                                             Sign up
                                         </button>
                                     </a>

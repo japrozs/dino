@@ -29,8 +29,8 @@ const Register: React.FC<registerProps> = ({}) => {
                         if (res.data?.register.errors) {
                             setErrors(toErrorMap(res.data.register.errors));
                         } else if (res.data?.register.user) {
-                            await client.resetStore();
                             router.push("/app");
+                            await client.resetStore();
                         }
                     }}
                 >

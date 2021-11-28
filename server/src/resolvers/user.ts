@@ -177,8 +177,11 @@ export class UserResolver {
         }
 
         req.session.userId = user.id;
+        const us = await User.findOne(user.id, {
+            relations: ["notes", "folders"],
+        });
 
-        return { user };
+        return { user: us };
     }
 
     @Mutation(() => UserResponse)

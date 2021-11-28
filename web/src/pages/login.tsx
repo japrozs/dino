@@ -31,7 +31,7 @@ const Login: React.FC<LoginProps> = ({}) => {
                             } else {
                                 // worked
                                 await client.resetStore();
-                                router.push("/");
+                                router.push("/app");
                             }
                         }
                     }}

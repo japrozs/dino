@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                             className="rounded-sm w-7 h-7"
                                         />
                                         <div>
-                                            <p className="ml-3 text-base font-medium text-gray-800">
+                                            <p className="w-full ml-3 text-base font-medium text-gray-800">
                                                 {data.me?.name}
                                             </p>
 
