@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                 <div className="max-w-sm bg-gray-100 w-60 sidebar">
                     <Menu as="div" className="w-60">
                         <div>
-                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer w-60 hover:bg-gray-200">
+                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200">
                                 <img
                                     src={data.me?.imgUrl}
                                     alt={data.me?.name}

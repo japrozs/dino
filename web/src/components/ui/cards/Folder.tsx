@@ -57,7 +57,7 @@ export const FolderCard: React.FC<FolderCardProps> = ({
                 </p>
                 <Menu as="div" className={"ml-auto mr-0"}>
                     <div>
-                        <Menu.Button>
+                        <Menu.Button className={"focus:outline-none"}>
                             <BiDotsVerticalRounded className="w-4 h-4 text-gray-600 opacity-0 group-hover:opacity-100" />
                         </Menu.Button>
                     </div>

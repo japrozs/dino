@@ -20,7 +20,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     setOpen,
 }) => {
     const { data, loading } = useMeQuery();
-    const [name, setName] = useState(data && !loading ? data?.me?.name : "");
+    const [name, setName] = useState(data && !loading && data?.me?.name);
     const [sentEmailLink, setSentEmailLink] = useState(false);
     const [forgotPasswordMutation] = useForgotPasswordMutation();
     const client = useApolloClient();
@@ -125,7 +125,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     </p>
                                     <input
                                         className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100"
-                                        value={name}
+                                        value={name || ""}
                                         onChange={(e) =>
                                             setName(e.target.value)
                                         }
