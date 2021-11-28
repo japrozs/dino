@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                 </div>
             </div>
             <div className="flex flex-col items-center pt-20 sm:pt-16 md:flex-row">
-                <div className="w-full p-1 pr-2 sm:w-1/4 pl-9">
+                <div className="w-full p-1 pr-2 md:w-1/4 pl-9">
                     <img
                         className="w-24 h-auto mb-4"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=128,quality=100/front-static/pages/product/spot/spot-team-up.png"
@@ -58,18 +58,19 @@ const Home: NextPage = () => {
                         without any confusion
                     </p>
                 </div>
-                <div className="flex justify-center w-3/4 pt-6 align-middle sm:pt-0 sm:pl-14">
+                <div className="flex justify-center w-3/4 p-3 pt-6 align-middle sm:pt-0 sm:pl-14">
                     <img
-                        className="w-full h-auto m-3 border border-gray-300 rounded-md sm:w-auto sm:h-96"
+                        // className="w-full h-auto border border-gray-300 rounded-md sm:m-3 sm:w-auto sm:h-96"
+                        className="w-auto h-64 border border-gray-300 rounded-md w-border sm:h-96"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/ecosystem-tile-v3.png"
                         alt=""
                     />
                 </div>
             </div>
             <div className="flex flex-col items-center pt-20 sm:pt-16 md:flex-row">
-                <div className="w-full p-1 pr-2 sm:w-1/4 pl-9">
+                <div className="w-full p-1 pr-2 md:w-1/4 pl-9">
                     <img
-                        className="w-auto mb-4 h-9"
+                        className="w-auto mb-4"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=256,quality=100/front-static/pages/product/spot/spot-workflow.png"
                         alt=""
                     />
@@ -82,9 +83,9 @@ const Home: NextPage = () => {
                         to
                     </p>
                 </div>
-                <div className="flex justify-center w-3/4 pt-6 align-middle sm:pt-0 sm:pl-14">
+                <div className="flex justify-center w-3/4 p-3 pt-6 align-middle sm:pt-0 sm:pl-14">
                     <img
-                        className="w-full h-auto border border-gray-300 rounded-md sm:m-3 sm:w-auto sm:h-96"
+                        className="w-auto h-64 border border-gray-300 rounded-md w-border sm:h-96"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/context-tile.png"
                         alt=""
                     />
