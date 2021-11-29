@@ -120,6 +120,7 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
     const client = useApolloClient();
 
     useEffect(() => {
+        console.log(value);
         const timeout = setTimeout(async () => {
             await updateNoteMutation({
                 variables: {
