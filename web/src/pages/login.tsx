@@ -56,6 +56,15 @@ const Login: React.FC<LoginProps> = ({}) => {
                             >
                                 Login
                             </button>
+                            <p className="mt-3 text-sm text-gray-500">
+                                Don{"'"}t have an account?{" "}
+                                <span
+                                    className="font-medium text-purple-500 cursor-pointer"
+                                    onClick={() => router.push("/register")}
+                                >
+                                    Sign up
+                                </span>
+                            </p>
                         </Form>
                     )}
                 </Formik>

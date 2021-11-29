@@ -86,9 +86,14 @@ const Home: NextPage = () => {
                     </p>
                 </div>
                 <div className="flex justify-center w-3/4 p-3 pt-6 align-middle sm:pt-0 sm:pl-14">
-                    <img
+                    {/* <img
                         className="w-auto h-64 border border-gray-300 rounded-md w-border sm:h-96"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/context-tile.png"
+                        alt=""
+                    /> */}
+                    <img
+                        className="w-auto h-64 border border-gray-300 rounded-md w-border sm:h-96"
+                        src="https://github.com/japrozs/dino/raw/master/assets/editor.png"
                         alt=""
                     />
                 </div>

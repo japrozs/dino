@@ -59,6 +59,15 @@ const Register: React.FC<registerProps> = ({}) => {
                             >
                                 Register
                             </button>
+                            <p className="mt-3 text-sm text-gray-500">
+                                Already have an account?{" "}
+                                <span
+                                    className="font-medium text-purple-500 cursor-pointer"
+                                    onClick={() => router.push("/login")}
+                                >
+                                    Login
+                                </span>
+                            </p>
                         </Form>
                     )}
                 </Formik>
