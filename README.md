@@ -1,3 +1,5 @@
+![Screenshot](assets/banner.png)
+
 # Dino
 
 Dino is a new website, mobile app and desktop app to jot down your thoughts and all the stuff that you want to access quickly and easily. Cos' not everything's about being productive. `Dino is a work in progress`
