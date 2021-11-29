@@ -4,13 +4,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BiMenu } from "react-icons/bi";
 import { HiX } from "react-icons/hi";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 interface NavbarProps {}
 const navigation = [
     { name: "Product", href: "/product", current: false },
-    { name: "Download", href: "/download", current: false },
-    { name: "Pricing", href: "/pricing", current: false },
-    { name: "Community", href: "/community", current: false },
+    { name: "Community", href: "https://twitter.com/japrozss", current: false },
 ];
 
 function classNames(...classes: any[]) {
@@ -18,6 +17,7 @@ function classNames(...classes: any[]) {
 }
 
 export const ShowcaseNavbar: React.FC<NavbarProps> = ({}) => {
+    const router = useRouter();
     return (
         <Disclosure
             as="nav"
@@ -52,7 +52,10 @@ export const ShowcaseNavbar: React.FC<NavbarProps> = ({}) => {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
-                                <div className="flex items-center flex-shrink-0">
+                                <div
+                                    className="flex items-center flex-shrink-0 cursor-pointer"
+                                    onClick={() => router.push("/")}
+                                >
                                     <svg
                                         className="block w-auto h-11 lg:hidden"
                                         width="171"

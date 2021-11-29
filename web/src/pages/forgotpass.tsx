@@ -18,7 +18,7 @@ const Forgotpass: React.FC<forgotpassProps> = ({}) => {
     };
 
     return (
-        <div>
+        <div className="m-5 sm:m-0">
             <div className="max-w-md mx-auto mt-3">
                 <h1 className="mb-4 text-3xl font-semibold text-gray-800">
                     Forgot password

@@ -1,28 +1,22 @@
 /* eslint-disable react/no-unknown-property */
-import type { NextPage } from "next";
-import { useMeQuery } from "../generated/graphql";
+import React from "react";
 import { ShowcaseNavbar } from "../components/showcase/Navbar";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import Head from "next/head";
 
-const Home: NextPage = () => {
-    const { data, loading } = useMeQuery();
-    const router = useRouter();
-    if (!loading && data?.me != null) {
-        router.push("/app");
-    }
+interface productProps {}
+
+const Product: React.FC<productProps> = ({}) => {
     return (
         <div>
             <Head>
                 <title>Dino</title>
             </Head>
             <ShowcaseNavbar />
-            <div className="flex flex-col items-center pt-5 sm:pt-12 md:flex-row">
+            <div className="flex flex-col items-center pt-5 sm:pt-8 md:flex-row">
                 <div className="w-full p-1 px-9">
                     <h1 className="mb-1 text-5xl font-bold text-gray-900">
-                        All your notes.
-                        <br /> everywhere
+                        Simple and smart.
                     </h1>
                     <p className="my-6 mt-4 text-lg font-medium text-gray-700">
                         <code>Dino</code> is a new way to jot down your thoughts
@@ -41,7 +35,7 @@ const Home: NextPage = () => {
                 <div className="flex justify-center w-full pt-6 align-middle sm:pt-0">
                     <img
                         className="w-auto h-60 sm:h-96"
-                        src="https://ouch-cdn2.icons8.com/B7tv246-7CYquGe8KkJ4sqNb__SEFbE8wrpCM-rckfM/rs:fit:912:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNzI1/L2YwZDQyMGY4LTZh/MGMtNDU2Ny05ZDA0/LTVhZTRiNzIxMzZk/MS5zdmc.png"
+                        src="https://ouch-cdn2.icons8.com/cJRcXDb8IbYn85VGT69dULzEfHogefrtvhP1gH37I_I/rs:fit:912:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMjA2/L2UxN2IwMDBjLWE5/YWItNDBiOC05NDBh/LWEwNGUxMTU0YmI3/Ni5zdmc.png"
                         alt=""
                     />
                 </div>
@@ -66,7 +60,7 @@ const Home: NextPage = () => {
                     <img
                         // className="w-full h-auto border border-gray-300 rounded-md sm:m-3 sm:w-auto sm:h-96"
                         className="w-auto h-48 border border-gray-300 rounded-md w-border sm:h-96"
-                        src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/ecosystem-tile-v3.png"
+                        src="https://github.com/japrozs/dino/raw/master/assets/main.png"
                         alt=""
                     />
                 </div>
@@ -95,7 +89,7 @@ const Home: NextPage = () => {
                     /> */}
                     <img
                         className="w-auto h-48 border border-gray-300 rounded-md w-border sm:h-96"
-                        src="https://github.com/japrozs/dino/raw/master/assets/editor.png"
+                        src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/ecosystem-tile-v3.png"
                         alt=""
                     />
                 </div>
@@ -291,4 +285,4 @@ const Home: NextPage = () => {
     );
 };
 
-export default Home;
+export default Product;

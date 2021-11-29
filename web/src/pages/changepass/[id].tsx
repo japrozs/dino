@@ -20,7 +20,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
                 <Meta title={"Change Password"} />
                 <title>Change Password - Dino</title>
             </Head>
-            <div>
+            <div className="m-5 sm:m-0">
                 <div className="max-w-lg mx-auto mt-3">
                     <h1 className="mb-3 text-2xl font-semibold text-gray-800">
                         Change password
