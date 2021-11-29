@@ -23,6 +23,7 @@
     "react-icons": "^4.3.1",
     "react-responsive-modal": "^6.1.0",
     "slate": "^0.70.0",
+    "slate-history": "^0.66.0",
     "slate-instant-replace": "^0.1.16",
     "slate-react": "^0.70.2"
   },

@@ -108,7 +108,7 @@ export const FolderNoteCard: React.FC<FolderNoteCardProps> = ({ id }) => {
         },
     });
     return (
-        <NextLink href={`/app/n/${id}`}>
+        <NextLink href="/app/n/[id]" as={`/app/n/${id}`}>
             <a>
                 <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200">
                     <p className="text-sm font-medium text-gray-700 truncate">

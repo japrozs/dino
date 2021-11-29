@@ -10,6 +10,7 @@ import { ReactEditor, useSlateStatic } from "slate-react";
 import { Icon } from "./editor/core/navbar/Icon";
 import { ParaStyleDropDown } from "./editor/core/navbar/ParaStyleDropdown";
 import { MdOutlineDelete } from "react-icons/md";
+import { BiImageAlt } from "react-icons/bi";
 import { DeleteNoteModal } from "./modals/DeleteNote";
 import { useRouter } from "next/router";
 import {
@@ -21,6 +22,8 @@ import { findNoteFolder } from "../../utils/findNoteFolder";
 import { Listbox, Transition } from "@headlessui/react";
 import { findFolderId } from "../../utils/FindFolderId";
 import { useApolloClient } from "@apollo/client";
+import { insertImage } from "./editor/core/renderElement";
+import { AddImageModal } from "./modals/addImage";
 
 interface NavbarProps {
     saving: boolean;
@@ -109,6 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
     );
     const blockType = getTextBlockStyle(editor);
     const [open, setOpen] = useState(false);
+    const [imageOpen, setImageOpen] = useState(false);
     const router = useRouter();
     const { data, loading } = useMeQuery();
     const [selected, setSelected] = useState(
@@ -177,6 +181,12 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                     editor={editor}
                 />
             ))}
+            <BiImageAlt
+                className={
+                    "p-1  w-7 h-7 text-gray-800 rounded-sm cursor-pointer border border-white mx-1 hover:bg-gray-100 hover:border-gray-300"
+                }
+                onClick={() => setImageOpen(true)}
+            />
             {saving ? (
                 <p className="ml-2 text-sm font-medium text-gray-600">
                     Saving...
@@ -241,6 +251,11 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                         ? parseInt(router.query.id)
                         : -1
                 }
+            />
+            <AddImageModal
+                editor={editor}
+                open={imageOpen}
+                setOpen={setImageOpen}
             />
         </div>
     );

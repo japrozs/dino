@@ -14,6 +14,7 @@ import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import {
     GetNoteQuery,
     UpdateNoteTitleDocument,
+    useGetNoteQuery,
     useUpdateNoteMutation,
     useUpdateNoteTitleMutation,
 } from "../../../generated/graphql";
@@ -21,6 +22,7 @@ import { Navbar, toggleStyle } from "../Navbar";
 import { renderElement } from "./core/renderElement";
 import { renderLeaf } from "./core/renderLeaf";
 import ContentEditable from "react-contenteditable";
+import { withHistory } from "slate-history";
 
 interface EditorProps {
     note: GetNoteQuery["getNote"];
@@ -39,7 +41,7 @@ declare module "slate" {
         Text: CustomText;
     }
 }
-type SlateEditor = BaseEditor & ReactEditor;
+export type SlateEditor = BaseEditor & ReactEditor;
 
 const useEditorConfig = (editor: SlateEditor) => {
     const onKeyDown = useCallback(
@@ -91,12 +93,18 @@ const useSelection = (editor: SlateEditor) => {
 };
 
 export const Editor: React.FC<EditorProps> = ({ note }) => {
-    const editor = useMemo(() => withReact(createEditor()), []);
+    const editor = useMemo(() => withReact(withHistory(createEditor())), []);
     const [value, setValue] = useState<Descendant[]>(
         note.body == ""
             ? [
                   {
-                      type: "paragraph",
+                      type: "Paragraph",
+                      children: [{ text: "" }],
+                  },
+                  {
+                      type: "image",
+                      alt: "",
+                      src: "https://www.placecage.com/gif/600/250",
                       children: [{ text: "" }],
                   },
               ]
