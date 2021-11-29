@@ -3,7 +3,10 @@ import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { InputField } from "../components/ui/InputField";
-import { useLoginMutation } from "../generated/graphql";
+import {
+    useForgotPasswordMutation,
+    useLoginMutation,
+} from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
 
 interface LoginProps {}
@@ -64,6 +67,12 @@ const Login: React.FC<LoginProps> = ({}) => {
                                 >
                                     Sign up
                                 </span>
+                            </p>
+                            <p
+                                onClick={() => router.push("/forgotpass")}
+                                className="mt-3 ml-auto mr-0 text-sm font-medium text-gray-700 cursor-pointer"
+                            >
+                                Forgot password
                             </p>
                         </Form>
                     )}

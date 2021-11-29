@@ -72,7 +72,7 @@ const Home: NextPage = () => {
             <div className="flex flex-col items-center pt-20 sm:pt-16 md:flex-row">
                 <div className="w-full p-1 pr-2 md:w-1/4 pl-9">
                     <img
-                        className="w-auto mb-4"
+                        className="w-auto h-12 mb-4"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=256,quality=100/front-static/pages/product/spot/spot-workflow.png"
                         alt=""
                     />
