@@ -8,7 +8,7 @@ export const useIsAuth = () => {
     console.log("data ::", data);
     useEffect(() => {
         if (!loading && !data?.me) {
-            router.replace("/login?next=" + router.pathname);
+            router.replace("/");
         }
     }, [loading, data, router]);
 };

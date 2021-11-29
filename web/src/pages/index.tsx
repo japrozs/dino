@@ -4,6 +4,7 @@ import { useMeQuery } from "../generated/graphql";
 import { ShowcaseNavbar } from "../components/showcase/Navbar";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import EditorImage from '../public/editor.png'
 
 const Home: NextPage = () => {
     const { data, loading } = useMeQuery();
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
                     </h1>
                     <p className="my-6 mt-4 text-lg font-medium text-gray-700">
                         <code>Dino</code> is a new way to jot down your thoughts
-                        and all the stuff that you want to access easily anf
+                        and all the stuff that you want to access easily and
                         quickly. Cos
                         {"'"} not everything is about <code>productivity</code>
                     </p>
@@ -84,7 +85,7 @@ const Home: NextPage = () => {
                     </p>
                 </div>
                 <div className="flex justify-center w-3/4 p-3 pt-6 align-middle sm:pt-0 sm:pl-14">
-                    <img
+                    <EditorImage
                         className="w-auto h-64 border border-gray-300 rounded-md w-border sm:h-96"
                         src="https://www.notion.so/cdn-cgi/image/format=auto,width=3840,quality=100/front-static/pages/product/value-props/context-tile.png"
                         alt=""
