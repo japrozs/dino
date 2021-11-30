@@ -4,13 +4,14 @@ import {
     Editor as StaticEditor,
     Range,
     Transforms,
-    Element,
+    Element as SlateElement,
+    Descendant,
 } from "slate";
 import { ReactEditor, useSlateStatic } from "slate-react";
 import { Icon } from "./editor/core/navbar/Icon";
 import { ParaStyleDropDown } from "./editor/core/navbar/ParaStyleDropdown";
 import { MdOutlineDelete } from "react-icons/md";
-import { BiImageAlt } from "react-icons/bi";
+import { BiImageAlt, BiLink } from "react-icons/bi";
 import { DeleteNoteModal } from "./modals/DeleteNote";
 import { useRouter } from "next/router";
 import {
@@ -57,7 +58,14 @@ export function toggleStyle(editor: SlateEditor, style: any) {
     }
 }
 
-const CHARACTER_STYLES = ["bold", "italic", "underline", "code", "highlighted"];
+const CHARACTER_STYLES = [
+    "bold",
+    "italic",
+    "underline",
+    "code",
+    "highlighted",
+    "link",
+];
 
 function getTextBlockStyle(editor: SlateEditor) {
     const selection = editor.selection;

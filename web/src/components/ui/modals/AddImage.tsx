@@ -70,7 +70,7 @@ export const AddImageModal: React.FC<AddImageModalProps> = ({
                                 value={imageUrl}
                                 placeholder="Enter Image URL"
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100 dark:bg-gray-700 dark:border-gray-600"
+                                className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                             />
                             <div className="flex items-center justify-end mt-5">
                                 <button

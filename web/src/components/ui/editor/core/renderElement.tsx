@@ -7,6 +7,7 @@ import {
 import { Editor, Transforms, Path, Node, Element } from "slate";
 import { ReactEditor } from "slate-react";
 import { SlateEditor } from "../editor";
+import router from "next/router";
 
 export const renderElement = (props: any) => {
     const { element, children, attributes } = props;
@@ -81,39 +82,6 @@ const Image = ({ attributes, element, children }: any) => {
             {children}
         </div>
     );
-};
-
-const Link = ({ attributes, element, children }: any) => {
-    const editor = useSlateStatic();
-    const selected = useSelected();
-    const focused = useFocused();
-
-    return (
-        <div className="relative inline">
-            <a {...attributes} href={element.href}>
-                {children}
-            </a>
-            {selected && focused && (
-                <div
-                    className="absolute left-0 flex items-center gap-10 px-10 py-6 bg-gray-100 border border-gray-300 rounded-sm"
-                    contentEditable={false}
-                >
-                    <a href={element.href} rel="noreferrer" target="_blank">
-                        {element.href}
-                    </a>
-                    <button onClick={() => removeLink(editor)}>faUnlink</button>
-                </div>
-            )}
-        </div>
-    );
-};
-
-const removeLink = (editor: SlateEditor, opts = {}) => {
-    Transforms.unwrapNodes(editor, {
-        ...opts,
-        match: (n) =>
-            !Editor.isEditor(n) && Element.isElement(n) && n.type === "link",
-    });
 };
 
 export const insertImage = (editor: SlateEditor, url: any) => {

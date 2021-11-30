@@ -4,8 +4,16 @@ import {
     BiCode,
     BiUnderline,
     BiHighlight,
+    BiLink,
 } from "react-icons/bi";
-import { BaseEditor } from "slate";
+import {
+    BaseEditor,
+    Descendant,
+    Range,
+    Element as SlateElement,
+    Transforms,
+    Editor as StaticEditor,
+} from "slate";
 import { ReactEditor } from "slate-react";
 import { toggleStyle } from "../../../Navbar";
 
@@ -15,6 +23,8 @@ interface IconProps {
     editor: SlateEditor;
 }
 type SlateEditor = BaseEditor & ReactEditor;
+
+type LinkElement = { type: "link"; url: string; children: Descendant[] };
 
 export const Icon: React.FC<IconProps> = ({ style, isActive, editor }) => {
     const normalClassName =

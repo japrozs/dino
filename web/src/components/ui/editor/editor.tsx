@@ -1,6 +1,7 @@
 import { useApolloClient } from "@apollo/client";
 import areEqual from "deep-equal";
 import isHotkey from "is-hotkey";
+import isUrl from "is-url";
 import React, {
     createRef,
     useCallback,
@@ -48,9 +49,11 @@ const useEditorConfig = (editor: SlateEditor) => {
         (event) => KeyBindings.onKeyDown(editor, event),
         [editor]
     );
-    const { isVoid } = editor;
+    const { isVoid, isInline } = editor;
     editor.isVoid = (element) => {
         return ["image"].includes(element.type) || isVoid(element);
+        editor.isInline = (element) =>
+            ["link"].includes(element.type) || isInline(element);
     };
     return { renderElement, renderLeaf, onKeyDown };
 };
@@ -99,12 +102,6 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
             ? [
                   {
                       type: "Paragraph",
-                      children: [{ text: "" }],
-                  },
-                  {
-                      type: "image",
-                      alt: "",
-                      src: "https://www.placecage.com/gif/600/250",
                       children: [{ text: "" }],
                   },
               ]

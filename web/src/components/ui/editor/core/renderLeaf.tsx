@@ -1,3 +1,5 @@
+import { useSelected } from "slate-react";
+
 export const renderLeaf = ({ attributes, children, leaf }: any) => {
     let el = <>{children}</>;
 
