@@ -1,4 +1,10 @@
-import { BiBold, BiItalic, BiCode, BiUnderline, BiLink } from "react-icons/bi";
+import {
+    BiBold,
+    BiItalic,
+    BiCode,
+    BiUnderline,
+    BiHighlight,
+} from "react-icons/bi";
 import { BaseEditor } from "slate";
 import { ReactEditor } from "slate-react";
 import { toggleStyle } from "../../../Navbar";
@@ -28,7 +34,9 @@ export const Icon: React.FC<IconProps> = ({ style, isActive, editor }) => {
         underline: (
             <BiUnderline className={normalClassName} onClick={toggleMark} />
         ),
-        code: <BiCode className={normalClassName} onClick={toggleMark} />,
+        highlighted: (
+            <BiHighlight className={normalClassName} onClick={toggleMark} />
+        ),
     };
 
     const activeIconMap: Record<any, any> = {
@@ -38,6 +46,9 @@ export const Icon: React.FC<IconProps> = ({ style, isActive, editor }) => {
             <BiUnderline className={activeClassName} onClick={toggleMark} />
         ),
         code: <BiCode className={activeClassName} onClick={toggleMark} />,
+        highlighted: (
+            <BiHighlight className={activeClassName} onClick={toggleMark} />
+        ),
     };
 
     return (

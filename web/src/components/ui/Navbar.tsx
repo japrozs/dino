@@ -23,7 +23,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { findFolderId } from "../../utils/FindFolderId";
 import { useApolloClient } from "@apollo/client";
 import { insertImage } from "./editor/core/renderElement";
-import { AddImageModal } from "./modals/addImage";
+import { AddImageModal } from "./modals/AddImage";
 
 interface NavbarProps {
     saving: boolean;
@@ -57,7 +57,7 @@ export function toggleStyle(editor: SlateEditor, style: any) {
     }
 }
 
-const CHARACTER_STYLES = ["bold", "italic", "underline", "code"];
+const CHARACTER_STYLES = ["bold", "italic", "underline", "code", "highlighted"];
 
 function getTextBlockStyle(editor: SlateEditor) {
     const selection = editor.selection;
