@@ -161,36 +161,38 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
     const editableRef = useRef<any>();
     const [editableText, setEditableText] = useState("Edit me.");
     return (
-        <Slate editor={editor} value={value} onChange={onChangeHandler}>
-            <Navbar saving={loading || titleChangeLoading} id={note.id} />
-            <div className="max-w-3xl px-8 pt-6 mx-auto">
-                <ContentEditable
-                    innerRef={editableRef}
-                    tagName="p"
-                    html={title}
-                    className="mb-4 text-4xl font-semibold text-gray-800 focus:outline-none"
-                    onChange={(e) => {
-                        if (e.target.value.trim().length == 0) {
-                            return;
-                        } else {
-                            setTitle(e.target.value);
-                        }
-                    }}
-                />
-                <div className="editor" ref={editorRef}>
-                    <Editable
-                        renderElement={renderElement}
-                        renderLeaf={renderLeaf}
-                        placeholder={"Start writing here"}
-                        renderPlaceholder={({ children, attributes }) => (
-                            <div {...attributes}>
-                                <p>{children}</p>
-                            </div>
-                        )}
-                        onKeyDown={onKeyDown}
+        <div className="bg-gray-700">
+            <Slate editor={editor} value={value} onChange={onChangeHandler}>
+                <Navbar saving={loading || titleChangeLoading} id={note.id} />
+                <div className="max-w-3xl px-8 pt-6 mx-auto">
+                    <ContentEditable
+                        innerRef={editableRef}
+                        tagName="p"
+                        html={title}
+                        className="mb-4 text-4xl font-semibold text-gray-800 focus:outline-none dark:text-gray-200"
+                        onChange={(e) => {
+                            if (e.target.value.trim().length == 0) {
+                                return;
+                            } else {
+                                setTitle(e.target.value);
+                            }
+                        }}
                     />
+                    <div className="text-white editor" ref={editorRef}>
+                        <Editable
+                            renderElement={renderElement}
+                            renderLeaf={renderLeaf}
+                            placeholder={"Start writing here"}
+                            renderPlaceholder={({ children, attributes }) => (
+                                <div {...attributes}>
+                                    <p>{children}</p>
+                                </div>
+                            )}
+                            onKeyDown={onKeyDown}
+                        />
+                    </div>
                 </div>
-            </div>
-        </Slate>
+            </Slate>
+        </div>
     );
 };

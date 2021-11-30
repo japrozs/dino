@@ -48,19 +48,19 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
     return (
         <>
             {data && !loading ? (
-                <div className="max-w-sm bg-gray-100 w-60 sidebar">
+                <div className="max-w-sm bg-gray-100 border-r w-60 sidebar dark:bg-gray-700 dark:border-gray-600">
                     <Menu as="div" className="w-60">
                         <div>
-                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200">
+                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200 dark:hover:bg-gray-600">
                                 <img
                                     src={data.me?.imgUrl}
                                     alt={data.me?.name}
                                     className="w-6 h-6 rounded-sm"
                                 />
-                                <p className="ml-3 text-sm font-medium text-gray-800 truncate">
+                                <p className="ml-3 text-sm font-medium text-gray-800 truncate dark:text-gray-300">
                                     {data.me?.name}
                                 </p>
-                                <BiDotsVerticalRounded className="ml-auto mr-1 text-lg text-gray-800" />
+                                <BiDotsVerticalRounded className="ml-auto mr-1 text-lg text-gray-800 dark:text-gray-400" />
                             </Menu.Button>
                         </div>
                         <Transition
@@ -108,33 +108,33 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                     </Menu>
                     <div
                         onClick={() => setFindOpen(true)}
-                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200"
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
                     >
-                        <BiSearch className="w-4 h-4 text-gray-500" />
-                        <p className="ml-2 text-sm font-medium text-gray-700">
+                        <BiSearch className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                             Quick Find
                         </p>
                     </div>
                     <div
                         onClick={() => setSettingsOpen(true)}
-                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200"
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
                     >
-                        <BiCog className="w-4 h-4 text-gray-500" />
-                        <p className="ml-2 text-sm font-medium text-gray-700">
+                        <BiCog className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                             Settings
                         </p>
                     </div>
                     <nav className="pt-1">
                         <div className="flex items-center px-2 mb-1 group">
                             <h1
-                                className="font-semibold text-gray-500"
+                                className="font-semibold text-gray-500 dark:text-gray-400"
                                 style={{ fontSize: "0.75rem" }}
                             >
                                 FOLDERS
                             </h1>
                             <BiPlus
                                 onClick={() => setOpen(true)}
-                                className="w-5 h-5 ml-auto mr-0 text-gray-600 transition border border-gray-400 rounded-sm opacity-0 cursor-pointer group-hover:opacity-100 hover:border-gray-500"
+                                className="w-5 h-5 ml-auto mr-0 text-gray-600 transition border border-gray-400 rounded-sm opacity-0 cursor-pointer dark:text-gray-500 group-hover:opacity-100 hover:border-gray-500 dark:border-gray-500 dark:hover:border-gray-400"
                             />
                         </div>
                         {data.me?.folders.map((folder) => (
@@ -148,14 +148,14 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                         ))}
                         <div className="flex items-center px-2 mt-3 mb-1 group">
                             <h1
-                                className="font-semibold text-gray-500"
+                                className="font-semibold text-gray-500 dark:text-gray-400"
                                 style={{ fontSize: "0.75rem" }}
                             >
                                 ALL NOTES
                             </h1>
                             <BiPlus
                                 onClick={newNote}
-                                className="w-5 h-5 ml-auto mr-0 text-gray-600 transition border border-gray-400 rounded-sm opacity-0 cursor-pointer group-hover:opacity-100 hover:border-gray-500"
+                                className="w-5 h-5 ml-auto mr-0 text-gray-600 transition border border-gray-400 rounded-sm opacity-0 cursor-pointer dark:text-gray-500 group-hover:opacity-100 hover:border-gray-500 dark:border-gray-500 dark:hover:border-gray-400"
                             />
                         </div>
                         <div className="max-h-full overflow-y-scroll">

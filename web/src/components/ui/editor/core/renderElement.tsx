@@ -14,13 +14,41 @@ export const renderElement = (props: any) => {
         case "paragraph":
             return <p {...attributes}>{children}</p>;
         case "H1":
-            return <h1 {...attributes}>{children}</h1>;
+            return (
+                <h1
+                    className="text-gray-900 dark:text-gray-100"
+                    {...attributes}
+                >
+                    {children}
+                </h1>
+            );
         case "H2":
-            return <h2 {...attributes}>{children}</h2>;
+            return (
+                <h2
+                    className="text-gray-900 dark:text-gray-100"
+                    {...attributes}
+                >
+                    {children}
+                </h2>
+            );
         case "H3":
-            return <h3 {...attributes}>{children}</h3>;
+            return (
+                <h3
+                    className="text-gray-900 dark:text-gray-100"
+                    {...attributes}
+                >
+                    {children}
+                </h3>
+            );
         case "H4":
-            return <h4 {...attributes}>{children}</h4>;
+            return (
+                <h4
+                    className="text-gray-900 dark:text-gray-100"
+                    {...attributes}
+                >
+                    {children}
+                </h4>
+            );
         case "code":
             return <code {...attributes}>{children}</code>;
         case "image":

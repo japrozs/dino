@@ -357,7 +357,6 @@ code {
 .editor h1 {
     font-size: 1.8em;
     font-weight: 600;
-    color: #111827;
     margin: 2px 0px;
 }
 
@@ -370,26 +369,22 @@ code {
 .editor h3 {
     font-size: 1.17em;
     font-weight: 600;
-    color: #111827;
 }
 
 .editor h4 {
     font-size: 1em;
     font-weight: 600;
-    color: #111827;
 }
 
 .editor h5 {
     font-size: 0.83em;
     font-weight: 600;
     margin: 1.67em 0;
-    color: #111827;
 }
 
 .editor h6 {
     font-size: 0.67em;
     font-weight: 600;
-    color: #111827;
 }
 
 .editor code * {
