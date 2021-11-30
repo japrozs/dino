@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                                         <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-gray-700">
                                             {data.me?.folders.map((folder) => (
                                                 <Listbox.Option
-                                                    className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
+                                                    className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
                                                     value={folder.name}
                                                     key={folder.id}
                                                 >
@@ -240,7 +240,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                         </div>
                         <MdOutlineDelete
                             onClick={() => setOpen(true)}
-                            className="p-1 ml-2 rounded-sm cursor-pointer w-7 h-7 hover:bg-gray-100"
+                            className="p-1 ml-2 rounded-sm cursor-pointer w-7 h-7 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                         />
                     </>
                 )}

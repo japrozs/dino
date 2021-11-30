@@ -161,7 +161,7 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
     const editableRef = useRef<any>();
     const [editableText, setEditableText] = useState("Edit me.");
     return (
-        <div className="bg-gray-700">
+        <div className="min-h-screen dark:bg-gray-800">
             <Slate editor={editor} value={value} onChange={onChangeHandler}>
                 <Navbar saving={loading || titleChangeLoading} id={note.id} />
                 <div className="max-w-3xl px-8 pt-6 mx-auto">
@@ -178,8 +178,9 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
                             }
                         }}
                     />
-                    <div className="text-white editor" ref={editorRef}>
+                    <div className="dark:text-gray-100 editor" ref={editorRef}>
                         <Editable
+                            spellCheck={false}
                             renderElement={renderElement}
                             renderLeaf={renderLeaf}
                             placeholder={"Start writing here"}

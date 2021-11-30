@@ -89,17 +89,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
                         <div
-                            className="inline-block p-4 overflow-x-hidden overflow-y-scroll text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+                            className="inline-block p-4 overflow-x-hidden overflow-y-scroll text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
                             style={{
                                 maxHeight: "35rem",
                             }}
                         >
                             {data && !loading ? (
                                 <>
-                                    <h1 className="pb-1 mb-1 text-base font-medium text-gray-800 border-b border-gray-300">
+                                    <h1 className="pb-1 mb-1 text-base font-medium text-gray-800 border-b border-gray-300 dark:text-gray-200 dark:border-gray-600">
                                         Account
                                     </h1>
-                                    <p className="mt-3 text-sm text-gray-800">
+                                    <p className="mt-3 text-sm text-gray-800 dark:text-gray-400">
                                         Photo
                                     </p>
                                     <img
@@ -107,24 +107,24 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         alt={data.me?.name}
                                         className="w-20 h-20 mt-2 rounded-full"
                                     />
-                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100">
+                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600">
                                         Upload photo
                                     </button>
                                     <hr className="my-3 border-t border-gray-300" />
-                                    <p className="mb-3 text-sm text-gray-800 ">
+                                    <p className="mb-3 text-sm text-gray-800 dark:text-gray-300">
                                         Personal Info
                                     </p>
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">
                                         Email
                                     </p>
-                                    <p className="text-sm text-gray-800 menlo">
+                                    <p className="text-sm text-gray-800 menlo dark:text-gray-200">
                                         {data.me?.email}
                                     </p>
-                                    <p className="mt-3 text-xs text-gray-500">
+                                    <p className="mt-3 text-xs text-gray-500 dark:text-gray-300">
                                         Name
                                     </p>
                                     <input
-                                        className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100"
+                                        className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm dark:bg-gray-700 focus:outline-none focus:ring focus:border-blue-100 dark:border-gray-600 dark:text-gray-200"
                                         value={name || ""}
                                         onChange={(e) =>
                                             setName(e.target.value)
@@ -134,24 +134,24 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         <>
                                             <button
                                                 onClick={updateName}
-                                                className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100"
+                                                className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600"
                                             >
                                                 Update
                                             </button>
                                         </>
                                     )}
                                     <hr className="my-3 mt-5 border-t border-gray-300" />
-                                    <p className="mb-1 text-sm text-gray-800 ">
+                                    <p className="mb-1 text-sm text-gray-800 dark:text-gray-300">
                                         Password
                                     </p>
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">
                                         Log out after reseting the password, to
                                         use it
                                     </p>
                                     <div className="flex items-center my-2 mt-4">
                                         <button
                                             onClick={forgotPassword}
-                                            className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100"
+                                            className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600"
                                         >
                                             Change password
                                         </button>
@@ -163,25 +163,25 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         </p>
                                     )}
                                     <hr className="my-3 mt-5 border-t border-gray-300" />
-                                    <p className="mb-1 text-sm text-gray-800 ">
+                                    <p className="mb-1 text-sm text-gray-800 dark:text-gray-300">
                                         Log out of all devices
                                     </p>
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-gray-500 dark:text-gr">
                                         You will be logged out of all other
                                         active sessions besides this one and
                                         will have to log back in.
                                     </p>
                                     <button
                                         onClick={logUserOut}
-                                        className="px-3 py-1.5 mt-2 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50"
+                                        className="px-3 py-1.5 mt-2 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50 dark:text-red-400 dark:border-red-400 dark:hover:bg-btn-dark"
                                     >
                                         Log out
                                     </button>
                                     <hr className="my-3 mt-5 border-t border-gray-300" />
-                                    <p className="mb-3 text-sm text-gray-800 ">
+                                    <p className="mb-3 text-sm text-gray-800 dark:text-gray-300">
                                         Danger zone Info
                                     </p>
-                                    <button className="px-3 py-1.5 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50">
+                                    <button className="px-3 py-1.5 text-sm text-red-600 border border-red-300 rounded-sm hover:bg-red-50 dark:text-red-400 dark:border-red-400 dark:hover:bg-btn-dark">
                                         Delete account
                                     </button>
                                 </>

@@ -387,12 +387,24 @@ code {
     font-weight: 600;
 }
 
-.editor code * {
-    font-family: "Menlo" !important;
-    background-color: var(--gray-200);
-    padding: 2px;
-    border-radius: 3px;
-    font-size: 95%;
+@media (prefers-color-scheme: dark) {
+    .editor code * {
+        font-family: "Menlo" !important;
+        background-color: #374151;
+        padding: 2px;
+        border-radius: 3px;
+        font-size: 95%;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .editor code * {
+        font-family: "Menlo" !important;
+        background-color: var(--gray-200);
+        padding: 2px;
+        border-radius: 3px;
+        font-size: 95%;
+    }
 }
 
 .editor .bold {

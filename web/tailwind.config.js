@@ -6,7 +6,11 @@ module.exports = {
     ],
     darkMode: "media", // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                "btn-dark": "rgba(235, 87,87, 0.1)",
+            },
+        },
     },
     variants: {
         extend: {},

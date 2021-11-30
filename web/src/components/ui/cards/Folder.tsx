@@ -44,21 +44,23 @@ export const FolderCard: React.FC<FolderCardProps> = ({
         <div>
             <div
                 onClick={() => setShowContents(!showContents)}
-                className="group flex cursor-pointer items-center px-2 py-0.5 hover:bg-gray-200"
+                className="group flex cursor-pointer items-center px-2 py-0.5 hover:bg-gray-200 dark:hover:bg-gray-600"
             >
                 {showContents ? (
-                    <BiCaretDown className="mr-1 text-sm text-gray-700" />
+                    <BiCaretDown className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
                 ) : (
-                    <BiCaretRight className="mr-1 text-sm text-gray-700" />
+                    <BiCaretRight className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
                 )}
                 <ColoredCircle color={color} />
-                <p className="ml-1.5 text-sm font-medium text-gray-700 truncate">
+                <p className="ml-1.5 text-sm font-medium text-gray-700 truncate dark:text-gray-300">
                     {name}
                 </p>
                 <Menu as="div" className={"ml-auto mr-0"}>
                     <div>
-                        <Menu.Button className={"focus:outline-none"}>
-                            <BiDotsVerticalRounded className="w-4 h-4 text-gray-600 opacity-0 group-hover:opacity-100" />
+                        <Menu.Button
+                            className={"focus:outline-none flex items-center"}
+                        >
+                            <BiDotsVerticalRounded className="w-4 h-4 text-gray-600 opacity-0 group-hover:opacity-100 dark:text-gray-400" />
                         </Menu.Button>
                     </div>
                     <Transition
@@ -71,13 +73,13 @@ export const FolderCard: React.FC<FolderCardProps> = ({
                         leaveTo="transform opacity-0 scale-95"
                     >
                         <Menu.Items className="absolute right-0 z-20 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div className="flex items-center py-1">
+                            <div className="flex items-center py-1 rounded-sm dark:bg-gray-600">
                                 <div
                                     onClick={deleteFolder}
-                                    className="flex items-center w-full px-2 py-2 hover:bg-gray-100 hover:text-gray-800"
+                                    className="flex items-center w-full px-2 py-2 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700"
                                 >
-                                    <MdOutlineDelete className="w-4 h-4 mr-1 text-gray-700" />
-                                    <p className="text-sm font-medium text-gray-700 cursor-pointer ">
+                                    <MdOutlineDelete className="w-4 h-4 mr-1 text-gray-700 dark:text-gray-200" />
+                                    <p className="text-sm font-medium text-gray-700 cursor-pointer dark:text-gray-200">
                                         Delete
                                     </p>
                                 </div>
@@ -110,8 +112,8 @@ export const FolderNoteCard: React.FC<FolderNoteCardProps> = ({ id }) => {
     return (
         <NextLink href="/app/n/[id]" as={`/app/n/${id}`}>
             <a>
-                <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200">
-                    <p className="text-sm font-medium text-gray-700 truncate">
+                <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200 dark:hover:bg-gray-600">
+                    <p className="text-sm font-medium text-gray-700 truncate dark:text-gray-200">
                         {data?.getNote.title}
                     </p>
                 </div>

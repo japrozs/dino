@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
     return (
         <>
             {data && !loading ? (
-                <div className="max-w-sm bg-gray-100 border-r w-60 sidebar dark:bg-gray-700 dark:border-gray-600">
+                <div className="max-w-sm bg-gray-100 border-r w-60 sidebar dark:bg-gray-700 dark:border-gray-700">
                     <Menu as="div" className="w-60">
                         <div>
                             <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200 dark:hover:bg-gray-600">
@@ -72,33 +72,32 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-10 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-600 left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="py-1.5">
-                                    <div className="flex items-center">
-                                        <code className="px-2 text-xs">
+                                    <div className="flex items-center mb-1">
+                                        <p className="px-2 text-xs menlo dark:text-green-500">
                                             {data.me?.email}
-                                        </code>
-                                        <BiDotsVerticalRounded className="ml-auto mr-2 text-gray-700 rounded-sm cursor-pointer" />
+                                        </p>
                                     </div>
-                                    <div className="flex items-center px-2 py-1 border-b border-gray-200 cursor-pointer hover:bg-gray-100">
+                                    <div className="flex items-center px-2 py-1 border-b border-gray-200 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-500">
                                         <img
                                             src={data.me?.imgUrl}
                                             alt={data.me?.name}
                                             className="rounded-sm w-7 h-7"
                                         />
                                         <div>
-                                            <p className="w-full ml-3 text-base font-medium text-gray-800">
+                                            <p className="w-full ml-3 text-base font-medium text-gray-800 dark:text-gray-300">
                                                 {data.me?.name}
                                             </p>
 
-                                            <p className="ml-3 text-xs text-gray-500">
+                                            <p className="ml-3 text-xs text-gray-500 dark:text-gray-400">
                                                 Standard Plan
                                             </p>
                                         </div>
                                     </div>
                                     <p
                                         onClick={logUserOut}
-                                        className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                        className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-100 dark:hover:bg-gray-700"
                                     >
                                         Log out
                                     </p>
@@ -110,8 +109,8 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                         onClick={() => setFindOpen(true)}
                         className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
                     >
-                        <BiSearch className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <BiSearch className="w-4 h-4 text-gray-500 dark:text-gray-300" />
+                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                             Quick Find
                         </p>
                     </div>
@@ -119,8 +118,8 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                         onClick={() => setSettingsOpen(true)}
                         className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
                     >
-                        <BiCog className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <BiCog className="w-4 h-4 text-gray-500 dark:text-gray-300" />
+                        <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                             Settings
                         </p>
                     </div>
@@ -171,7 +170,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                     </nav>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center w-64 max-w-full min-h-screen bg-gray-100">
+                <div className="flex flex-col items-center justify-center w-64 max-w-full min-h-screen bg-gray-100 dark:bg-gray-700">
                     <Spinner />
                 </div>
             )}

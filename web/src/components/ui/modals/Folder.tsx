@@ -25,6 +25,7 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
             },
         });
         await client.resetStore();
+        setFolderName('')
         setOpen(false);
     };
 
@@ -64,10 +65,10 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block p-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div className="inline-block p-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <div className="flex items-center p-1">
                                 <input
-                                    className="w-full font-normal focus:outline-none"
+                                    className="w-full font-normal text-gray-200 bg-transparent focus:outline-none"
                                     placeholder="Name of the folder"
                                     onChange={(e) =>
                                         setFolderName(e.target.value)
@@ -81,8 +82,8 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
                                         onClick={createFolder}
                                         className={`w-6 h-6 ${
                                             folderName.trim().length == 0
-                                                ? "text-gray-500"
-                                                : "text-gray-800"
+                                                ? "text-gray-500 dark:text-gray-400"
+                                                : "text-gray-800 dark:text-gray-200"
                                         } transition ${
                                             folderName.trim().length != 0 &&
                                             "cursor-pointer"

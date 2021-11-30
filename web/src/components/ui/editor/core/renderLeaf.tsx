@@ -19,7 +19,7 @@ export const renderLeaf = ({ attributes, children, leaf }: any) => {
 
     if (leaf.highlighted) {
         el = (
-            <span className="bg-purple-300 rounded-sm px-1 p-0.5 dark:bg-gray-800">
+            <span className="bg-red-300 rounded-sm px-1 p-0.5 dark:bg-gray-700">
                 {el}
             </span>
         );
