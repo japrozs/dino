@@ -76,6 +76,10 @@ const KeyBindings = {
             toggleStyle(editor, "underline");
             return;
         }
+        if (isHotkey("mod+h", event)) {
+            toggleStyle(editor, "highlighted");
+            return;
+        }
     },
 };
 
@@ -160,7 +164,7 @@ export const Editor: React.FC<EditorProps> = ({ note }) => {
     return (
         <div className="min-h-screen dark:bg-gray-800">
             <Slate editor={editor} value={value} onChange={onChangeHandler}>
-                <Navbar saving={loading || titleChangeLoading} id={note.id} />
+                <Navbar saving={loading || titleChangeLoading} id={note.id} note={note}/>
                 <div className="max-w-3xl px-8 pt-6 mx-auto">
                     <ContentEditable
                         innerRef={editableRef}

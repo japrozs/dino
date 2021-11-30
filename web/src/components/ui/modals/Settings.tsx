@@ -107,7 +107,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         alt={data.me?.name}
                                         className="w-20 h-20 mt-2 rounded-full"
                                     />
-                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600">
+                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400">
                                         Upload photo
                                     </button>
                                     <hr className="my-3 border-t border-gray-300" />
@@ -134,7 +134,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         <>
                                             <button
                                                 onClick={updateName}
-                                                className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600"
+                                                className="px-2 py-1 mt-3 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400"
                                             >
                                                 Update
                                             </button>
@@ -151,7 +151,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     <div className="flex items-center my-2 mt-4">
                                         <button
                                             onClick={forgotPassword}
-                                            className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600"
+                                            className="px-2 py-1 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400"
                                         >
                                             Change password
                                         </button>

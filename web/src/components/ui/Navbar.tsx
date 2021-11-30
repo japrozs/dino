@@ -15,6 +15,7 @@ import { BiImageAlt, BiLink } from "react-icons/bi";
 import { DeleteNoteModal } from "./modals/DeleteNote";
 import { useRouter } from "next/router";
 import {
+    GetNoteQuery,
     useAddNoteToFolderMutation,
     useDeleteNoteFromFolderMutation,
     useMeQuery,
@@ -25,10 +26,12 @@ import { findFolderId } from "../../utils/FindFolderId";
 import { useApolloClient } from "@apollo/client";
 import { insertImage } from "./editor/core/renderElement";
 import { AddImageModal } from "./modals/AddImage";
+import { timeSince, timeSinceShort } from "../../utils/timeSince";
 
 interface NavbarProps {
     saving: boolean;
     id: number;
+    note: GetNoteQuery["getNote"];
 }
 type SlateEditor = BaseEditor & ReactEditor;
 
@@ -58,14 +61,7 @@ export function toggleStyle(editor: SlateEditor, style: any) {
     }
 }
 
-const CHARACTER_STYLES = [
-    "bold",
-    "italic",
-    "underline",
-    "code",
-    "highlighted",
-    "link",
-];
+const CHARACTER_STYLES = ["bold", "italic", "underline", "code", "highlighted"];
 
 function getTextBlockStyle(editor: SlateEditor) {
     const selection = editor.selection;
@@ -107,7 +103,7 @@ function toggleBlockType(editor: SlateEditor, blockType: any) {
     );
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
+export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
     const editor = useSlateStatic();
     const onBlockTypeChange = useCallback(
         (targetType) => {
@@ -201,7 +197,10 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id }) => {
                 </p>
             ) : (
                 <p className="ml-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Saved
+                    Saved{" "}
+                    <span className="font-normal">
+                        {timeSinceShort(note.updatedAt)} ago
+                    </span>
                 </p>
             )}
             <div className="flex items-center ml-auto mr-2">
