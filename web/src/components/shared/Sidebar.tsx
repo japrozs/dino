@@ -72,14 +72,14 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="absolute right-0 z-20 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-600 left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-20 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-black-600 left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="py-1.5">
                                     <div className="flex items-center mb-1">
                                         <p className="px-2 text-xs menlo dark:text-green-500">
                                             {data.me?.email}
                                         </p>
                                     </div>
-                                    <div className="flex items-center px-2 py-1 border-b border-gray-200 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-500">
+                                    <div className="flex items-center px-2 py-1 border-b border-gray-200 cursor-pointer hover:bg-gray-100 dark:hover:bg-black-700 dark:border-black-500">
                                         <img
                                             src={data.me?.imgUrl}
                                             alt={data.me?.name}
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                                     </div>
                                     <p
                                         onClick={logUserOut}
-                                        className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-100 dark:hover:bg-gray-700"
+                                        className="px-2 py-1 pt-1.5 text-sm cursor-pointer font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-100 dark:hover:bg-black-700"
                                     >
                                         Log out
                                     </p>

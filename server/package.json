@@ -15,6 +15,7 @@
     "license": "ISC",
     "dependencies": {
         "apollo-server-express": "2.25.0",
+        "aws-sdk": "^2.1040.0",
         "connect-redis": "^6.0.0",
         "cors": "^2.8.5",
         "dotenv-safe": "^8.2.0",
@@ -23,6 +24,8 @@
         "graphql": "^15.6.1",
         "graphql-type-json": "^0.3.2",
         "ioredis": "^4.27.11",
+        "multer": "^1.4.3",
+        "multer-s3": "^2.10.0",
         "pg": "^8.7.1",
         "type-graphql": "^1.1.1",
         "typeorm": "^0.2.38"
@@ -32,6 +35,8 @@
         "@types/express-session": "^1.17.4",
         "@types/graphql-type-json": "^0.3.2",
         "@types/ioredis": "^4.27.6",
+        "@types/multer": "^1.4.7",
+        "@types/multer-s3": "^2.7.11",
         "@types/node": "^16.11.8",
         "@types/nodemailer": "^6.4.4",
         "@types/uuid": "^8.3.1",

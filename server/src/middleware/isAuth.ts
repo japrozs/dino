@@ -8,3 +8,11 @@ export const isAuth: MiddlewareFn<Context> = ({ context }, next) => {
 
     return next();
 };
+
+
+export const expressIsAuth = (req: any, _res: any, next: any) => {
+    if (!req.session.userId) {
+        throw new Error("not authenticated");
+    }
+    return next();
+};

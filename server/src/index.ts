@@ -16,6 +16,7 @@ import path from "path";
 import { NoteResolver } from "./resolvers/note";
 import { Folder } from "./entities/Folder";
 import { FolderResolver } from "./resolvers/folder";
+import avatarUpload from "./resolvers/upload/avatar";
 
 const main = async () => {
     const conn = await createConnection({
@@ -51,7 +52,7 @@ const main = async () => {
                 httpOnly: true,
                 sameSite: "lax",
                 secure: __prod__,
-                domain: __prod__ ? "dino.app" : undefined,
+                domain: __prod__ ? ".japrozsaini.me" : undefined,
             },
             saveUninitialized: false,
             secret: process.env.SESSION_SECRET,
@@ -70,6 +71,8 @@ const main = async () => {
             redis,
         }),
     });
+
+    app.use("/upload/", avatarUpload);
 
     apolloServer.applyMiddleware({
         app,

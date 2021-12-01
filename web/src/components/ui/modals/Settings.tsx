@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, createRef, ChangeEvent } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
     useForgotPasswordMutation,
@@ -10,6 +10,7 @@ import {
 import { useApolloClient } from "@apollo/client";
 import { useRouter } from "next/router";
 import { Spinner } from "../../shared/Spinner";
+import Axios from "axios";
 
 interface SettingsModalProps {
     open: boolean;
@@ -28,6 +29,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     const router = useRouter();
     const [logout] = useLogoutMutation();
     const [updateNameMutation] = useUpdateNameMutation();
+    const fileInputRef = createRef<HTMLInputElement>();
 
     const forgotPassword = async () => {
         await forgotPasswordMutation({
@@ -51,6 +53,29 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             },
         });
         await client.resetStore();
+    };
+
+    const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
+        const file = (event.target as any).files[0];
+        console.log(file);
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("userId", data?.me?.id as any);
+
+        try {
+            await Axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/upload/avatar`,
+                formData,
+                {
+                    headers: { "Content-Type": "multipart/form-data" },
+                    withCredentials: true,
+                }
+            );
+            await client.resetStore();
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -108,9 +133,24 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         alt={data.me?.name}
                                         className="w-20 h-20 mt-2 rounded-full"
                                     />
-                                    <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400">
-                                        Upload photo
-                                    </button>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            hidden={true}
+                                            ref={fileInputRef}
+                                            onChange={uploadImage}
+                                        />
+                                        <button
+                                            onClick={() => {
+                                                (
+                                                    fileInputRef as any
+                                                ).current.click();
+                                            }}
+                                            className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400"
+                                        >
+                                            Upload photo
+                                        </button>
+                                    </div>
                                     <hr className="my-3 border-t border-gray-300 dark:border-gray-600" />
                                     <p className="mb-3 text-sm text-gray-800 dark:text-gray-300">
                                         Personal Info
@@ -126,7 +166,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     </p>
                                     <input
                                         className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm dark:bg-black-700 focus:outline-none focus:ring focus:border-blue-100 dark:border-gray-600 dark:text-gray-200"
-                                        value={name || ""}
+                                        value={name as any}
                                         onChange={(e) =>
                                             setName(e.target.value)
                                         }
