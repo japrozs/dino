@@ -28,10 +28,10 @@ type LinkElement = { type: "link"; url: string; children: Descendant[] };
 
 export const Icon: React.FC<IconProps> = ({ style, isActive, editor }) => {
     const normalClassName =
-        "p-1  w-7 h-7 text-gray-800 dark:text-gray-200 cursor-pointer border border-white dark:border-gray-800 mx-1";
+        "p-1  w-7 h-7 text-gray-800 dark:text-gray-200 cursor-pointer border border-white dark:border-black-navbar mx-1";
 
     const activeClassName =
-        "p-1  w-7 h-7 text-gray-800  cursor-pointer dark:bg-gray-700 bg-gray-100 rounded-sm mx-1 border border-gray-300 dark:border-gray-600 dark:text-gray-200";
+        "p-1  w-7 h-7 text-gray-800  cursor-pointer dark:bg-black-pantone bg-gray-100 rounded-sm mx-1 border border-gray-300 dark:border-gray-700 dark:text-gray-200";
 
     const toggleMark = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
         e.preventDefault();

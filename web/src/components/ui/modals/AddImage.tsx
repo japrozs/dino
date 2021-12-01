@@ -39,7 +39,7 @@ export const AddImageModal: React.FC<AddImageModalProps> = ({
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-75 bg-black-500" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}
@@ -58,7 +58,7 @@ export const AddImageModal: React.FC<AddImageModalProps> = ({
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block p-3 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div className="inline-block p-3 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-black-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <p
                                 className={
                                     "text-sm text-gray-500 dark:text-gray-300"
@@ -70,7 +70,7 @@ export const AddImageModal: React.FC<AddImageModalProps> = ({
                                 value={imageUrl}
                                 placeholder="Enter Image URL"
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                                className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-100 dark:bg-black-700 dark:border-gray-600 dark:text-gray-200"
                             />
                             <div className="flex items-center justify-end mt-5">
                                 <button

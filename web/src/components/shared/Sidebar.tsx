@@ -48,10 +48,10 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
     return (
         <>
             {data && !loading ? (
-                <div className="max-w-sm bg-gray-100 border-r w-60 sidebar dark:bg-gray-700 dark:border-gray-700">
+                <div className="max-w-sm bg-gray-100 border-r w-60 sidebar dark:bg-black-700 dark:border-black-600">
                     <Menu as="div" className="w-60">
                         <div>
-                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200 dark:hover:bg-gray-600">
+                            <Menu.Button className="flex items-center p-2 text-white cursor-pointer focus:outline-none w-60 hover:bg-gray-200 dark:hover:bg-black-600">
                                 <img
                                     src={data.me?.imgUrl}
                                     alt={data.me?.name}
@@ -72,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-600 left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-20 mt-2 origin-top bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-600 left-2 w-60 ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div className="py-1.5">
                                     <div className="flex items-center mb-1">
                                         <p className="px-2 text-xs menlo dark:text-green-500">
@@ -107,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                     </Menu>
                     <div
                         onClick={() => setFindOpen(true)}
-                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-black-600"
                     >
                         <BiSearch className="w-4 h-4 text-gray-500 dark:text-gray-300" />
                         <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -116,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                     </div>
                     <div
                         onClick={() => setSettingsOpen(true)}
-                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
+                        className="flex items-center px-2 py-1.5 cursor-pointer hover:bg-gray-200 dark:hover:bg-black-600"
                     >
                         <BiCog className="w-4 h-4 text-gray-500 dark:text-gray-300" />
                         <p className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">

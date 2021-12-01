@@ -25,7 +25,7 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
             },
         });
         await client.resetStore();
-        setFolderName('')
+        setFolderName("");
         setOpen(false);
     };
 
@@ -46,7 +46,7 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-75 bg-black-500" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}
@@ -65,7 +65,7 @@ export const FolderModal: React.FC<FolderModalProps> = ({ open, setOpen }) => {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block p-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div className="inline-block p-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-black-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <div className="flex items-center p-1">
                                 <input
                                     className="w-full font-normal text-gray-200 bg-transparent focus:outline-none"

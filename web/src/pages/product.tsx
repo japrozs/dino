@@ -115,49 +115,49 @@ const Product: React.FC<productProps> = ({}) => {
                             d="M65.5854 61.6991V7.59353L85.719 27.2531V82.2923L65.5854 61.6991Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M105.415 101.301V155.406L85.281 135.747V80.7077L105.415 101.301Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M64.7449 101.398L10.5942 101.398L30.2698 81.2814L85.3549 81.2814L64.7449 101.398Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M139.776 81.7186L85.6252 81.7186L105.301 61.6022L160.386 61.6022L139.776 81.7186Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M123.777 43.9087L104.112 62.6428L104.113 35.6888L123.777 16.9546L123.777 43.9087Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M65.6277 127.311L45.9634 146.045L45.9635 119.091L65.6277 100.357L65.6277 127.311Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M46.9402 41.9541L65.7581 61.537L38.7817 61.6304L19.9638 42.0476L46.9402 41.9541Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <path
                             d="M132.288 100.992L151.106 120.575L124.129 120.668L105.312 101.085L132.288 100.992Z"
                             fill="#252020"
                             stroke="white"
-                            stroke-width="0.5"
+                            strokeWidth="0.5"
                         />
                         <rect
                             x="7.5"
@@ -179,7 +179,7 @@ const Product: React.FC<productProps> = ({}) => {
                             color-interpolation-filters="sRGB"
                         >
                             <feFlood
-                                flood-opacity="0"
+                                floodOpacity="0"
                                 result="BackgroundImageFix"
                             />
                             <feColorMatrix

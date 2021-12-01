@@ -46,7 +46,7 @@ export const DeleteNoteModal: React.FC<DeleteNoteModalProps> = ({
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-75 bg-black-500" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}
@@ -65,14 +65,14 @@ export const DeleteNoteModal: React.FC<DeleteNoteModalProps> = ({
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block p-3 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div className="inline-block p-3 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-black-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <p className="mb-6 font-medium text-gray-800 text-md dark:text-gray-200">
                                 Are you sure you want to delete this note ?
                             </p>
                             <div className="flex items-center justify-end mt-2">
                                 <button
                                     onClick={() => setOpen(false)}
-                                    className="transition px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-500 dark:text-gray-300 rounded-sm hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-600"
+                                    className="transition px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-500 dark:text-gray-300 rounded-sm hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-700"
                                 >
                                     Cancel
                                 </button>

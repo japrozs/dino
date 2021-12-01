@@ -9,6 +9,7 @@ import {
 } from "../../../generated/graphql";
 import { useApolloClient } from "@apollo/client";
 import { useRouter } from "next/router";
+import { Spinner } from "../../shared/Spinner";
 
 interface SettingsModalProps {
     open: boolean;
@@ -69,7 +70,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-75 bg-black-500" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}
@@ -89,7 +90,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
                         <div
-                            className="inline-block p-4 overflow-x-hidden overflow-y-scroll text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+                            className="inline-block p-4 overflow-x-hidden overflow-y-scroll text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-black-700 sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
                             style={{
                                 maxHeight: "35rem",
                             }}
@@ -110,7 +111,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     <button className="px-2 py-1 mt-2 text-sm border border-gray-300 rounded-sm focus:outline-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:border-gray-400">
                                         Upload photo
                                     </button>
-                                    <hr className="my-3 border-t border-gray-300" />
+                                    <hr className="my-3 border-t border-gray-300 dark:border-gray-600" />
                                     <p className="mb-3 text-sm text-gray-800 dark:text-gray-300">
                                         Personal Info
                                     </p>
@@ -124,7 +125,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                         Name
                                     </p>
                                     <input
-                                        className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm dark:bg-gray-700 focus:outline-none focus:ring focus:border-blue-100 dark:border-gray-600 dark:text-gray-200"
+                                        className="w-full p-1 px-2 mt-2 text-sm bg-gray-100 border border-gray-300 rounded-sm dark:bg-black-700 focus:outline-none focus:ring focus:border-blue-100 dark:border-gray-600 dark:text-gray-200"
                                         value={name || ""}
                                         onChange={(e) =>
                                             setName(e.target.value)
@@ -140,7 +141,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                             </button>
                                         </>
                                     )}
-                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <hr className="my-3 mt-5 border-t border-gray-300 dark:border-gray-600" />
                                     <p className="mb-1 text-sm text-gray-800 dark:text-gray-300">
                                         Password
                                     </p>
@@ -162,7 +163,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                             to change your password!
                                         </p>
                                     )}
-                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <hr className="my-3 mt-5 border-t border-gray-300 dark:border-gray-600" />
                                     <p className="mb-1 text-sm text-gray-800 dark:text-gray-300">
                                         Log out of all devices
                                     </p>
@@ -177,7 +178,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     >
                                         Log out
                                     </button>
-                                    <hr className="my-3 mt-5 border-t border-gray-300" />
+                                    <hr className="my-3 mt-5 border-t border-gray-300 dark:border-gray-600" />
                                     <p className="mb-3 text-sm text-gray-800 dark:text-gray-300">
                                         Danger zone Info
                                     </p>
@@ -186,7 +187,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     </button>
                                 </>
                             ) : (
-                                <p>loading...</p>
+                                <div className="flex flex-col items-center justify-center max-w-full min-h-screen dark:bg-gray-800">
+                                    <Spinner />
+                                </div>
                             )}
                         </div>
                     </Transition.Child>

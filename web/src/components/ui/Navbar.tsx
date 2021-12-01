@@ -168,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
     }, [selected]);
 
     return (
-        <div className="z-10 flex items-center sticky top-0 px-2 py-1.5 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600">
+        <div className="z-10 flex items-center sticky top-0 px-2 py-1.5 bg-white dark:bg-black-navbar border-b border-gray-200 dark:border-transparent">
             <ParaStyleDropDown
                 initialValue={blockType}
                 onChange={onBlockTypeChange}
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
             ))}
             <BiImageAlt
                 className={
-                    "p-1  w-7 h-7 text-gray-800 rounded-sm cursor-pointer border border-white dark:border-gray-800 dark:hover:border-gray-600 mx-1 hover:bg-gray-100 hover:border-gray-300 dark:text-gray-200 dark:hover:bg-gray-700"
+                    "p-1  w-7 h-7 text-gray-800 rounded-sm cursor-pointer border border-white dark:border-black-navbar dark:hover:border-gray-700 mx-1 hover:bg-gray-100 hover:border-gray-300 dark:text-gray-200 dark:hover:bg-black-pantone"
                 }
                 onClick={() => setImageOpen(true)}
             />
@@ -209,7 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
                         <div className="w-32">
                             <Listbox value={selected} onChange={setSelected}>
                                 <div className="relative mt-1">
-                                    <Listbox.Button className="text-left relative w-full py-1.5 pl-3  bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-100 dark:bg-gray-600 dark:border-gray-500 dark:hover:bg-gray-600">
+                                    <Listbox.Button className="text-left relative w-full py-1.5 pl-3  bg-gray-50 border border-gray-300 rounded-sm cursor-pointer sm:text-sm hover:bg-gray-100 dark:bg-black-700 dark:border-gray-700 transition duration-75 dark:hover:bg-black-600">
                                         <span className="block truncate menlo dark:text-gray-200">
                                             {selected}
                                         </span>
@@ -220,10 +220,10 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
                                         leaveFrom="opacity-100"
                                         leaveTo="opacity-0"
                                     >
-                                        <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-gray-700">
+                                        <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm dark:bg-black-700">
                                             {data.me?.folders.map((folder) => (
                                                 <Listbox.Option
-                                                    className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
+                                                    className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-black-600 dark:text-gray-200"
                                                     value={folder.name}
                                                     key={folder.id}
                                                 >
@@ -233,7 +233,7 @@ export const Navbar: React.FC<NavbarProps> = ({ saving, id, note }) => {
                                                 </Listbox.Option>
                                             ))}
                                             <Listbox.Option
-                                                className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
+                                                className="relative py-2 pl-4 pr-4 text-gray-900 cursor-pointer hover:bg-gray-100 dark:hover:bg-black-600 dark:text-gray-200"
                                                 value={"No Folder"}
                                             >
                                                 <span className="block truncate menlo">

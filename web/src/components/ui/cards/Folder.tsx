@@ -44,14 +44,16 @@ export const FolderCard: React.FC<FolderCardProps> = ({
         <div>
             <div
                 onClick={() => setShowContents(!showContents)}
-                className="group flex cursor-pointer items-center px-2 py-0.5 hover:bg-gray-200 dark:hover:bg-gray-600"
+                className="group flex cursor-pointer items-center pl-1 px-2 py-0.5 hover:bg-gray-200 dark:hover:bg-black-600"
             >
-                {showContents ? (
-                    <BiCaretDown className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
-                ) : (
-                    <BiCaretRight className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
-                )}
-                <ColoredCircle color={color} />
+                <div className="flex items-center w-7">
+                    {showContents ? (
+                        <BiCaretDown className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
+                    ) : (
+                        <BiCaretRight className="mr-1 text-sm text-gray-700 dark:text-gray-400" />
+                    )}
+                    <ColoredCircle color={color} />
+                </div>
                 <p className="ml-1.5 text-sm font-medium text-gray-700 truncate dark:text-gray-300">
                     {name}
                 </p>
@@ -112,7 +114,7 @@ export const FolderNoteCard: React.FC<FolderNoteCardProps> = ({ id }) => {
     return (
         <NextLink href="/app/n/[id]" as={`/app/n/${id}`}>
             <a>
-                <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200 dark:hover:bg-gray-600">
+                <div className="flex pl-7 cursor-pointer items-center pr-2 py-0.5 hover:bg-gray-200 dark:hover:bg-black-600">
                     <p className="text-sm font-medium text-gray-700 truncate dark:text-gray-200">
                         {data?.getNote.title}
                     </p>

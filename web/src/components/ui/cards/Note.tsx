@@ -15,7 +15,7 @@ export const NoteCard: React.FC<NoteCardProps> = ({ name, status, id }) => {
     return (
         <NextLink href={`/app/n/${id}`}>
             <a>
-                <div className="flex cursor-pointer items-center px-2 py-0.5 hover:bg-gray-200 dark:hover:bg-gray-600">
+                <div className="flex cursor-pointer items-center px-2 py-0.5 hover:bg-gray-200 dark:hover:bg-black-600">
                     <div className="w-2">
                         <ColoredCircle
                             color={

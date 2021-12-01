@@ -4,6 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { useMeQuery } from "../../../generated/graphql";
 import { findNoteFolder } from "../../../utils/findNoteFolder";
 import { searchNotes } from "../../../utils/searchNotes";
+import NextLink from "next/link";
 
 interface QuickFindProps {
     open: boolean;
@@ -30,7 +31,7 @@ export const QuickFindModal: React.FC<QuickFindProps> = ({ open, setOpen }) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+                        <Dialog.Overlay className="fixed inset-0 transition-opacity bg-opacity-75 bg-black-500" />
                     </Transition.Child>
 
                     {/* This element is to trick the browser into centering the modal contents. */}
@@ -49,8 +50,8 @@ export const QuickFindModal: React.FC<QuickFindProps> = ({ open, setOpen }) => {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className="inline-block pb-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-gray-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                            <div className="flex items-center p-2 px-3 mb-1 bg-gray-100 dark:bg-gray-800 dark:text-gray-200">
+                        <div className="inline-block pb-2 overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl dark:bg-black-700 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                            <div className="flex items-center p-2 px-3 mb-1 bg-gray-100 dark:bg-black-800 dark:text-gray-200">
                                 <BiSearch className="w-5 h-5 text-gray-500" />
                                 <input
                                     value={query}
@@ -67,25 +68,29 @@ export const QuickFindModal: React.FC<QuickFindProps> = ({ open, setOpen }) => {
                             {query.trim().length == 0 && (
                                 <>
                                     {data?.me?.notes.slice(0, 7).map((note) => (
-                                        <div
+                                        <NextLink
+                                            href={`/app/n/${note.id}`}
                                             key={note.id}
-                                            className="flex items-center p-2 px-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                                         >
-                                            <h1 className="text-sm font-medium text-gray-800 dark:text-gray-300">
-                                                {note.title}
-                                            </h1>
-                                            {findNoteFolder(
-                                                note.id,
-                                                data.me?.folders
-                                            ) != "No Folder" && (
-                                                <p className="ml-5 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                            <a>
+                                                <div className="flex items-center p-2 px-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-black-600">
+                                                    <h1 className="text-sm font-medium text-gray-800 dark:text-gray-300">
+                                                        {note.title}
+                                                    </h1>
                                                     {findNoteFolder(
                                                         note.id,
                                                         data.me?.folders
+                                                    ) != "No Folder" && (
+                                                        <p className="ml-5 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                                            {findNoteFolder(
+                                                                note.id,
+                                                                data.me?.folders
+                                                            )}
+                                                        </p>
                                                     )}
-                                                </p>
-                                            )}
-                                        </div>
+                                                </div>
+                                            </a>
+                                        </NextLink>
                                     ))}
                                 </>
                             )}
@@ -95,25 +100,30 @@ export const QuickFindModal: React.FC<QuickFindProps> = ({ open, setOpen }) => {
                                         query,
                                         data?.me?.notes as any
                                     ).map((note) => (
-                                        <div
+                                        <NextLink
+                                            href={`/app/n/${note.id}`}
                                             key={note.id}
-                                            className="flex items-center p-2 px-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                                         >
-                                            <h1 className="text-sm font-medium text-gray-800 dark:text-gray-300">
-                                                {note.title}
-                                            </h1>
-                                            {findNoteFolder(
-                                                note.id,
-                                                data?.me?.folders
-                                            ) != "No Folder" && (
-                                                <p className="ml-5 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                            <a>
+                                                <div className="flex items-center p-2 px-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-black-600">
+                                                    <h1 className="text-sm font-medium text-gray-800 dark:text-gray-300">
+                                                        {note.title}
+                                                    </h1>
                                                     {findNoteFolder(
                                                         note.id,
                                                         data?.me?.folders
+                                                    ) != "No Folder" && (
+                                                        <p className="ml-5 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                                            {findNoteFolder(
+                                                                note.id,
+                                                                data?.me
+                                                                    ?.folders
+                                                            )}
+                                                        </p>
                                                     )}
-                                                </p>
-                                            )}
-                                        </div>
+                                                </div>
+                                            </a>
+                                        </NextLink>
                                     ))}
                                 </>
                             )}
